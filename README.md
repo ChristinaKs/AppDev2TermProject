@@ -1,6 +1,7 @@
 # AppDev2TermProject
+[Deliverables Folder](https://github.com/ChristinaKs/AppDev2TermProject/tree/main/Deliverables)
+&emsp; This folder contains each file or folder submitted for each deliverable required
 
 ## Authors
 - [Christina Kallas](https://github.com/ChristinaKs)
-- [Kerian Loerick-Roger](https://github.com/kerian15)
 - [Sarah Primavera](https://github.com/sarahprimavera)
