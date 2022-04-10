@@ -8,7 +8,7 @@
     android:background="#ccccff">
 
     <TextView
-        android:id="@+id/SignUpChoice"
+        android:id="@+id/IAmTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
@@ -30,9 +30,9 @@
         android:backgroundTint="#8080ff"
         android:text="Licensed Therapist"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/SignUpChoice"
-        app:layout_constraintStart_toStartOf="@+id/SignUpChoice"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpChoice" />
+        app:layout_constraintEnd_toEndOf="@+id/IAmTV"
+        app:layout_constraintStart_toStartOf="@+id/IAmTV"
+        app:layout_constraintTop_toBottomOf="@+id/IAmTV" />
 
     <Button
         android:id="@+id/CustomerButton"
