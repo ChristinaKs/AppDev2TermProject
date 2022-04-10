@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpChoice"
+    android:background="#ccccff">
+
+    <TextView
+        android:id="@+id/SignUpChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:text="I am a ..."
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/TherapistButton"
+        android:layout_width="230dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="192dp"
+        android:backgroundTint="#8080ff"
+        android:text="Licensed Therapist"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/SignUpChoice"
+        app:layout_constraintStart_toStartOf="@+id/SignUpChoice"
+        app:layout_constraintTop_toBottomOf="@+id/SignUpChoice" />
+
+    <Button
+        android:id="@+id/CustomerButton"
+        android:layout_width="230dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="#6666cc"
+        android:text="Client looking for a therapist"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/TherapistButton"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/TherapistButton"
+        app:layout_constraintTop_toBottomOf="@+id/TherapistButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
