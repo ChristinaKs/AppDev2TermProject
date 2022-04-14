@@ -12,41 +12,25 @@
         android:id="@+id/signupClient"
         android:layout_width="149dp"
         android:layout_height="48dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#6666cc"
         android:text="Sign Up"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seconPasswordClientPT" />
-
-    <EditText
-        android:id="@+id/seconPasswordClientPT"
-        android:layout_width="355dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="#575757"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:text="Please re-enter your password" />
+        app:layout_constraintTop_toBottomOf="@+id/clientPassword2" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:layout_marginTop="24dp"
         android:text="Re-enter your password: "
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lNameClientPT4" />
+        tools:layout_editor_absoluteY="574dp" />
 
     <EditText
         android:id="@+id/emailClientPT"
@@ -54,14 +38,15 @@
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
         android:ems="10"
+        android:hint="Please enter your email"
         android:inputType="textPersonName"
         android:textColor="#575757"
+        android:textColorHint="#575757"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:text="Please enter your email" />
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView6"
@@ -75,21 +60,6 @@
         app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ageClient" />
-
-    <EditText
-        android:id="@+id/lNameClientPT4"
-        android:layout_width="355dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="1dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="#575757"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:text="Please enter your password" />
 
     <TextView
         android:id="@+id/textView7"
@@ -117,19 +87,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lNameClientPT" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="20dp"
+        android:text="Gender: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/lNameClientPT" />
+
     <EditText
         android:id="@+id/lNameClientPT"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
         android:ems="10"
+        android:hint="Please enter your last name"
         android:inputType="textPersonName"
         android:textColor="#575757"
+        android:textColorHint="#575757"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:text="Please enter your last name" />
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/textView4"
@@ -178,8 +161,10 @@
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
         android:ems="10"
+        android:hint="Please enter your first name"
         android:inputType="textPersonName"
         android:textColor="#575757"
+        android:textColorHint="#575757"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -188,14 +173,65 @@
 
     <EditText
         android:id="@+id/ageClient"
-        android:layout_width="353dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="121dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Please enter your age"
+        android:hint="Enter age"
         android:inputType="number"
         android:textColorHint="#575757"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <CheckBox
+        android:id="@+id/femaleClientCB"
+        android:layout_width="87dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="131dp"
+        android:text="Female"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ageClient"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <CheckBox
+        android:id="@+id/maleClientCB"
+        android:layout_width="87dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:text="Male"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/femaleClientCB"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/clientPassword"
+        android:layout_width="351dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Please enter your password"
+        android:inputType="textPassword"
+        android:textColorHint="#575757"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/clientPassword2"
+        android:layout_width="351dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Please re-enter your password"
+        android:inputType="textPassword"
+        android:textColorHint="#575757"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 </androidx.constraintlayout.widget.ConstraintLayout>
