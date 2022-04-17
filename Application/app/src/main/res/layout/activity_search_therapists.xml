@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccccff"
+    tools:context=".SearchTherapists">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="270dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="32dp"
+        android:text="Search for a Therapist"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="413dp"
+        android:layout_height="78dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="136dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#3F51B5"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar"
+            app:tint="#FFFFFF"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="137dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="137dp"
+            android:backgroundTint="#3F51B5"
+            app:srcCompat="@android:drawable/ic_menu_search"
+            app:tint="#FFFFFF"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="274dp"
+            android:backgroundTint="#3F51B5"
+            app:srcCompat="@android:drawable/ic_menu_month"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MyClientsRV"
+        android:layout_width="407dp"
+        android:layout_height="555dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

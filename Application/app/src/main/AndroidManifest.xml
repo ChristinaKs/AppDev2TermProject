@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindMyTherapist">
         <activity
+            android:name=".TherapistAppointments"
+            android:exported="false" />
+        <activity
+            android:name=".ClientAppointments"
+            android:exported="false" />
+        <activity
+            android:name=".MyClients"
+            android:exported="false" />
+        <activity
+            android:name=".SearchTherapists"
+            android:exported="false" />
+        <activity
             android:name=".TherapistProfile"
             android:exported="false" />
         <activity
