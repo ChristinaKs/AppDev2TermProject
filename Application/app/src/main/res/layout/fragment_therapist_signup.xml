@@ -9,7 +9,7 @@
     android:id="@+id/frameLayout2" >
 
     <Button
-        android:id="@+id/signupTherapist"
+        android:id="@+id/signupTherapistButton"
         android:layout_width="149dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"

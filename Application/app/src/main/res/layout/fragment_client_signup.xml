@@ -9,7 +9,7 @@
     tools:context=".ClientSignupFragment">
 
     <Button
-        android:id="@+id/signupClient"
+        android:id="@+id/signupClientButton"
         android:layout_width="149dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ageClient" />
+        app:layout_constraintTop_toBottomOf="@+id/ageTherapistDisplay" />
 
     <TextView
         android:id="@+id/textView7"
@@ -85,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lNameClientPT" />
+        app:layout_constraintTop_toBottomOf="@+id/lNameClientPDisplayT" />
 
     <TextView
         android:id="@+id/textView3"
@@ -97,10 +97,10 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/lNameClientPT" />
+        app:layout_constraintTop_toBottomOf="@+id/lNameClientPDisplayT" />
 
     <EditText
-        android:id="@+id/lNameClientPT"
+        android:id="@+id/lNameClientPDisplayT"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
@@ -125,7 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fNameClientPT" />
+        app:layout_constraintTop_toBottomOf="@+id/fNameClientDisplayPT" />
 
     <TextView
         android:id="@+id/textView"
@@ -156,7 +156,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/fNameClientPT"
+        android:id="@+id/fNameClientDisplayPT"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
@@ -172,7 +172,7 @@
         tools:text="Please enter your first name" />
 
     <EditText
-        android:id="@+id/ageClient"
+        android:id="@+id/ageTherapistDisplay"
         android:layout_width="121dp"
         android:layout_height="38dp"
         android:layout_marginTop="8dp"
@@ -195,7 +195,7 @@
         android:text="Female"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ageClient"
+        app:layout_constraintStart_toEndOf="@+id/ageTherapistDisplay"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <CheckBox
