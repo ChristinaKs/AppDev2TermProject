@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/clientProfileIM"
             android:layout_width="136dp"
             android:layout_height="match_parent"
             android:backgroundTint="#3F51B5"
@@ -43,7 +43,7 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/searchTherapistIM"
             android:layout_width="137dp"
             android:layout_height="match_parent"
             android:layout_marginStart="137dp"
@@ -53,7 +53,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/clientAppointmentIM"
             android:layout_width="135dp"
             android:layout_height="match_parent"
             android:layout_marginStart="274dp"
