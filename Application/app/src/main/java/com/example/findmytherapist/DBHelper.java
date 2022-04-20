@@ -122,4 +122,22 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
 
     }
+
+    public Integer deleteTherapist (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(THERAPIST_TABLE, " ID = ?", new String[] {id});
+
+    }
+
+    public Integer deleteClient (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(CLIENT_TABLE, " ID = ?", new String[] {id});
+
+    }
+
+    public Integer deleteTimeSlot (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TIME_TABLE, " ID = ?", new String[] {id});
+
+    }
 }
