@@ -55,8 +55,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("create table "
                 + TIME_TABLE + " (Time_Id Integer primary key autoincrement, Therapist_License Integer, "
-                +"Time_IsAvailable Integer,Time_Time Text"
-                + "FOREIGNKEY ("+TIME_COL_2+") REFERENCES "+THERAPIST_TABLE+"("+THERAPIST_COL_1+")");
+                +"Time_IsAvailable Integer,Time_Time Text)");
+                /*+ "FOREIGNKEY ("+TIME_COL_2+") REFERENCES "+THERAPIST_TABLE+"("+THERAPIST_COL_1+")");*/
     }
 
     @Override
@@ -140,6 +140,40 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public boolean updateTherapist (String id, String Therapist_Email,String Therapist_First_Name,String Therapist_Last_Name,String Therapist_Gender,
+                                    String Therapist_Platform,String Therapist_Price_Range,String Therapist_Therapy_Type) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(THERAPIST_COL_2, Therapist_Email);
+        contentValues.put(THERAPIST_COL_4, Therapist_First_Name);
+        contentValues.put(THERAPIST_COL_5, Therapist_Last_Name);
+        contentValues.put(THERAPIST_COL_6, Therapist_Gender);
+        contentValues.put(THERAPIST_COL_7, Therapist_Platform);
+        contentValues.put(THERAPIST_COL_8, Therapist_Price_Range);
+        contentValues.put(THERAPIST_COL_9, Therapist_Therapy_Type);
+        db.update(THERAPIST_TABLE, contentValues, "ID = ? ", new String[] {id});
+        return  true;
+    }
+    public boolean updateClient (String id, String Client_Email,String Client_First_Name,String Client_Last_Name,
+                                 String Client_Gender,String Client_Age) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CLIENT_COL_2, Client_Email);
+        contentValues.put(CLIENT_COL_4, Client_First_Name);
+        contentValues.put(CLIENT_COL_5, Client_Last_Name);
+        contentValues.put(CLIENT_COL_6, Client_Gender);
+        contentValues.put(CLIENT_COL_7, Client_Age);
+        db.update(THERAPIST_TABLE, contentValues, "ID = ? ", new String[] {id});
+        return  true;
+    }
+    public boolean updateTime (String id, String Time_IsAvailable,String Time_Time) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TIME_COL_3, Time_IsAvailable);
+        contentValues.put(TIME_COL_3, Time_Time);
+        db.update(THERAPIST_TABLE, contentValues, "ID = ? ", new String[] {id});
+        return  true;
+    }
     public Integer deleteTherapist (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(THERAPIST_TABLE, " ID = ?", new String[] {id});
