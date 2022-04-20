@@ -240,4 +240,16 @@
             android:orientation="vertical" />
     </ScrollView>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="155dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="4dp"
+        android:text="View Availabilities"
+        android:backgroundTint="#6699cc"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

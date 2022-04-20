@@ -66,14 +66,13 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="License: "
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ageTherapist" />
+        tools:layout_editor_absoluteY="327dp" />
 
     <TextView
         android:id="@+id/textView19"
@@ -102,28 +101,16 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneCB" />
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:text="Age: "
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="235dp" />
-
-    <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="Gender: "
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        tools:layout_editor_absoluteY="235dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lNameTherapistPT" />
 
     <EditText
         android:id="@+id/lNameTherapistPT"
@@ -194,31 +181,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/ageTherapist"
-        android:layout_width="115dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="3dp"
-        android:ems="10"
-        android:hint="Enter age"
-        android:inputType="number"
-        android:textColor="#575757"
-        android:textColorHint="#575757"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
     <CheckBox
         android:id="@+id/femaleTherapistCB"
         android:layout_width="107dp"
         android:layout_height="48dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="142dp"
+        android:layout_marginEnd="272dp"
         android:text="Female"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ageTherapist"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <CheckBox
@@ -276,6 +245,7 @@
         android:layout_marginEnd="28dp"
         android:text="Male"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toEndOf="@+id/femaleTherapistCB"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
