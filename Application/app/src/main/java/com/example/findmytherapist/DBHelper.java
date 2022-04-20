@@ -1,5 +1,6 @@
 package com.example.findmytherapist;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -63,5 +64,62 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("Drop table if exists " + CLIENT_TABLE);
         sqLiteDatabase.execSQL("Drop table if exists " + TIME_TABLE);
         onCreate(sqLiteDatabase);
+    }
+
+    public boolean insertTime (String Therapist_License, String Time_IsAvailable,String Time_Time) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TIME_COL_2,Therapist_License);
+        contentValues.put(TIME_COL_3,Time_IsAvailable);
+        contentValues.put(TIME_COL_4,Time_Time);
+        long result = db.insert(TIME_TABLE, null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+    public boolean insertClient (String Client_Email, String Client_Password,String Client_First_Name,
+                                    String Client_Last_Name, String Client_Gender, String Client_Age) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CLIENT_COL_2,Client_Email);
+        contentValues.put(CLIENT_COL_3,Client_Password);
+        contentValues.put(CLIENT_COL_4,Client_First_Name);
+        contentValues.put(CLIENT_COL_5,Client_Last_Name);
+        contentValues.put(CLIENT_COL_6,Client_Gender);
+        contentValues.put(CLIENT_COL_7,Client_Age);
+        long result = db.insert(CLIENT_TABLE, null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+    public boolean insertTherapist (String Therapist_License, String Therapist_Email,String Therapist_Password,
+                                    String Therapist_First_Name, String Therapist_Last_Name, String Therapist_Gender,
+                                    String Therapist_Platform, String Therapist_Price_Range, String Therapist_Therapy_Type) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(THERAPIST_COL_1,Therapist_License);
+        contentValues.put(THERAPIST_COL_2,Therapist_Email);
+        contentValues.put(THERAPIST_COL_3,Therapist_Password);
+        contentValues.put(THERAPIST_COL_4,Therapist_First_Name);
+        contentValues.put(THERAPIST_COL_5,Therapist_Last_Name);
+        contentValues.put(THERAPIST_COL_6,Therapist_Gender);
+        contentValues.put(THERAPIST_COL_7,Therapist_Platform);
+        contentValues.put(THERAPIST_COL_8,Therapist_Price_Range);
+        contentValues.put(THERAPIST_COL_9,Therapist_Therapy_Type);
+        long result = db.insert(THERAPIST_TABLE, null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
     }
 }
