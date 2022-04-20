@@ -2,6 +2,7 @@ package com.example.findmytherapist;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -121,6 +122,22 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
 
+    }
+    public Cursor getTherapistData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + THERAPIST_TABLE, null);
+        return res;
+    }
+    public Cursor getClientData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + CLIENT_TABLE, null);
+        return res;
+    }
+
+    public Cursor getTimeData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TIME_TABLE, null);
+        return res;
     }
 
     public Integer deleteTherapist (String id) {
