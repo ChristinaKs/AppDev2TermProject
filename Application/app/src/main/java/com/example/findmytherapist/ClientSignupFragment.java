@@ -1,5 +1,6 @@
 package com.example.findmytherapist;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,13 +20,9 @@ import android.widget.EditText;
  */
 public class ClientSignupFragment extends Fragment {
 
-    EditText firstname,lastname,email,password,repass;
+    EditText firstname,lastname,age,email,password,repass;
     CheckBox female,male;
     Button clientSignup;
-
-    //initialize everything
-    //onlick listener for button
-    //in button check if user exists, else add to data
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,6 +67,51 @@ public class ClientSignupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_client_signup, container, false);
+        View view = inflater.inflate(R.layout.fragment_client_signup, container, false);
+        firstname = view.findViewById(R.id.fNameClientDisplayPT);
+        lastname = view.findViewById(R.id.lNameClientPDisplayT);
+        email = view.findViewById(R.id.emailClientPT);
+        age = view.findViewById(R.id.ageTherapistDisplay);
+        password = view.findViewById(R.id.clientPassword);
+        repass = view.findViewById(R.id.clientPassword2);
+        female = (CheckBox) view.findViewById(R.id.femaleClientCB);
+        male = (CheckBox) view.findViewById(R.id.maleClientCB);
+        clientSignup = (Button)view.findViewById((R.id.signupClientButton));
+        DBHelper db = new DBHelper(getActivity());
+
+        clientSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String firstName = firstname.getText().toString();
+                String lastName = lastname.getText().toString();
+                String email2 = email.getText().toString();
+                String age2 = age.getText().toString();
+                String password2 = password.getText().toString();
+                String repass2 = repass.getText().toString();
+                Boolean isFemale = female.isChecked();
+                Boolean isMale = male.isChecked();
+                String gender=" ";
+
+                //checking gender
+                if(isMale==true && isFemale==true){
+                    Toast.makeText(getActivity(),"Please choose one gender",Toast.LENGTH_SHORT).show();
+                }else if (isMale==true){
+                    gender = "male";
+                }else{
+                    gender = "female";
+                }
+                //checking if client already exists else adding to database
+                if(db.checkClientEmailExists(email2)){
+                    Toast.makeText(getActivity(),"User with this email already exists",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(db.insertClient(email2,password2,firstName,lastName,gender,age2)){
+                        Intent intent = new Intent(getActivity(),ClientProfile.class);
+                        startActivity(intent);
+                    };
+                }
+
+            }
+        });
+        return view;
     }
 }
