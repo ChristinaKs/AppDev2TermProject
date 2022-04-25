@@ -12,7 +12,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     private static final String DATABASE_NAME = "FindMyTherapist.db";
-
+    //make column for each platform offered
+    //add address for api
     private static final String THERAPIST_TABLE = "Therapist_table";
     private static final String THERAPIST_COL_1 = "Therapist_License";
     private static final String THERAPIST_COL_2 = "Therapist_Email";
@@ -21,9 +22,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String THERAPIST_COL_5 = "Therapist_Last_Name";
     private static final String THERAPIST_COL_6 = "Therapist_Gender";
     private static final String THERAPIST_COL_7 = "Therapist_Platform";
+
     private static final String THERAPIST_COL_8 = "Therapist_Price_Range";
     private static final String THERAPIST_COL_9 = "Therapist_Therapy_Type";
 
+    //add address here too
     private static final String CLIENT_TABLE = "Client_table";
     private static final String CLIENT_COL_1 = "Client_Id";
     private static final String CLIENT_COL_2 = "Client_Email";
@@ -54,9 +57,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 +"Client_First_Name Text,Client_Last_Name Text,Client_Gender Text,Client_Age Integer)");
 
         sqLiteDatabase.execSQL("create table "
-                + TIME_TABLE + " (Time_Id Integer primary key autoincrement, Therapist_License Integer, "
-                +"Time_IsAvailable Integer,Time_Time Text)");
-                /*+ "FOREIGNKEY ("+TIME_COL_2+") REFERENCES "+THERAPIST_TABLE+"("+THERAPIST_COL_1+")");*/
+                + TIME_TABLE + " Time_Id Integer primary key autoincrement, Therapist_License Integer, Time_IsAvailable Integer,Time_Time Text"
+                + " FOREIGN KEY ("+TIME_COL_2+") REFERENCES "+THERAPIST_TABLE+"("+THERAPIST_COL_1+")");
     }
 
     @Override

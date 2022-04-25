@@ -1,5 +1,6 @@
 package com.example.findmytherapist;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class TherapistSignupFragment extends Fragment {
+
+    EditText firstname,lastname,therapistLicense,password,repass;
+    CheckBox female,male,phone,text,zoom,person;
+    Button therapistSignUp;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +68,61 @@ public class TherapistSignupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_therapist_signup, container, false);
+        View view = inflater.inflate(R.layout.fragment_client_signup, container, false);
+        firstname = view.findViewById(R.id.fNameCTherapistPT);
+        lastname = view.findViewById(R.id.lNameTherapistPT);
+        therapistLicense = view.findViewById(R.id.licenseTherapistPT);
+        password = view.findViewById(R.id.passwordTherapist);
+        repass = view.findViewById(R.id.passwordTherapist2);
+        female = (CheckBox) view.findViewById(R.id.femaleClientCB);
+        male = (CheckBox) view.findViewById(R.id.maleClientCB);
+        phone = (CheckBox) view.findViewById(R.id.phoneCB);
+        text = (CheckBox) view.findViewById(R.id.textCB);
+        zoom = (CheckBox) view.findViewById(R.id.zoomCB);
+        person = (CheckBox) view.findViewById(R.id.inPersonCB);
+        therapistSignUp = (Button)view.findViewById((R.id.signupTherapistButton));
+        DBHelper db = new DBHelper(getActivity());
+
+        therapistSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String firstName = firstname.getText().toString();
+                String lastName = lastname.getText().toString();
+                String license = therapistLicense.getText().toString();
+                String password2 = password.getText().toString();
+                String repass2 = repass.getText().toString();
+                Boolean isFemale = female.isChecked();
+                Boolean isMale = male.isChecked();
+                Boolean doesPhone = phone.isChecked();
+                Boolean doesText = text.isChecked();
+                Boolean doesZoom = zoom.isChecked();
+                Boolean doesInPerson= person.isChecked();
+                String gender=" ";
+
+                //making sure password and confirm password is the same
+                if(!password2.equals(repass2)){
+                    Toast.makeText(getActivity(),"Make sure your passwords match",Toast.LENGTH_SHORT).show();
+                }
+                //checking gender
+                if(isMale==true && isFemale==true){
+                    Toast.makeText(getActivity(),"Please choose one gender",Toast.LENGTH_SHORT).show();
+                }else if (isMale==true){
+                    gender = "male";
+                }else{
+                    gender = "female";
+                }
+                //checking if client already exists else adding to database
+                if(db.checkClientEmailExists(email2)){
+                    Toast.makeText(getActivity(),"User with this email already exists",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(db.insertClient(email2,password2,firstName,lastName,gender,age2)){
+                        Intent intent = new Intent(getActivity(),ClientProfile.class);
+                        startActivity(intent);
+                    };
+                }
+
+            }
+        });
+        return view;
     }
 }
