@@ -151,7 +151,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(THERAPIST_COL_7, Therapist_Platform);
         contentValues.put(THERAPIST_COL_8, Therapist_Price_Range);
         contentValues.put(THERAPIST_COL_9, Therapist_Therapy_Type);
-        db.update(THERAPIST_TABLE, contentValues, "ID = ? ", new String[] {id});
+        db.update(THERAPIST_TABLE, contentValues, THERAPIST_COL_1+" = ? ", new String[] {id});
         return  true;
     }
     public boolean updateClient (String id, String Client_Email,String Client_First_Name,String Client_Last_Name,
@@ -163,7 +163,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(CLIENT_COL_5, Client_Last_Name);
         contentValues.put(CLIENT_COL_6, Client_Gender);
         contentValues.put(CLIENT_COL_7, Client_Age);
-        db.update(THERAPIST_TABLE, contentValues, "ID = ? ", new String[] {id});
+        db.update(CLIENT_TABLE, contentValues, CLIENT_COL_1+" = ? ", new String[] {id});
         return  true;
     }
     public boolean updateTime (String id, String Time_IsAvailable,String Time_Time) {
@@ -171,24 +171,62 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TIME_COL_3, Time_IsAvailable);
         contentValues.put(TIME_COL_3, Time_Time);
-        db.update(THERAPIST_TABLE, contentValues, "ID = ? ", new String[] {id});
+        db.update(TIME_TABLE, contentValues, TIME_COL_1+" = ? ", new String[] {id});
         return  true;
     }
     public Integer deleteTherapist (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(THERAPIST_TABLE, " ID = ?", new String[] {id});
+        return db.delete(THERAPIST_TABLE, THERAPIST_COL_1+" = ?", new String[] {id});
 
     }
 
     public Integer deleteClient (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(CLIENT_TABLE, " ID = ?", new String[] {id});
+        return db.delete(CLIENT_TABLE, CLIENT_COL_1+" = ?", new String[] {id});
 
     }
 
     public Integer deleteTimeSlot (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TIME_TABLE, " ID = ?", new String[] {id});
+        return db.delete(TIME_TABLE, TIME_COL_1+" = ?", new String[] {id});
 
+    }
+
+    public Boolean checkClientEmailExists(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " +CLIENT_TABLE+" where "+CLIENT_COL_2+" =?",new String[]{email});
+        if(cursor.getCount() > 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public Boolean checkTherapistEmailExists(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " +THERAPIST_TABLE+" where "+THERAPIST_COL_2+" =?",new String[]{email});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean checkClientEmailPassword(String email,String pass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+CLIENT_TABLE+" where "+CLIENT_COL_2+" =? and "+CLIENT_COL_3+" =? ",new String[]{email,pass});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public Boolean checkTherapistEmailPassword(String email,String pass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+THERAPIST_TABLE+" where "+THERAPIST_COL_2+" =? and "+THERAPIST_COL_3+" =? ",new String[]{email,pass});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
