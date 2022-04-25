@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +18,13 @@ import android.view.ViewGroup;
  */
 public class ClientSignupFragment extends Fragment {
 
+    EditText firstname,lastname,email,password,repass;
+    CheckBox female,male;
+    Button clientSignup;
+
+    //initialize everything
+    //onlick listener for button
+    //in button check if user exists, else add to data
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
