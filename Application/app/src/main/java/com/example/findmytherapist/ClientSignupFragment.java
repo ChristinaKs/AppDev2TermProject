@@ -85,6 +85,7 @@ public class ClientSignupFragment extends Fragment {
                 String firstName = firstname.getText().toString();
                 String lastName = lastname.getText().toString();
                 String email2 = email.getText().toString();
+                //add address
                 String age2 = age.getText().toString();
                 String password2 = password.getText().toString();
                 String repass2 = repass.getText().toString();
@@ -108,10 +109,10 @@ public class ClientSignupFragment extends Fragment {
                 if(db.checkClientEmailExists(email2)){
                     Toast.makeText(getActivity(),"User with this email already exists",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(db.insertClient(email2,password2,firstName,lastName,gender,age2)){
+                    /*if(db.insertClient(email2,password2,firstName,lastName,gender,age2)){
                         Intent intent = new Intent(getActivity(),ClientProfile.class);
                         startActivity(intent);
-                    };
+                    };*/
                 }
 
             }
