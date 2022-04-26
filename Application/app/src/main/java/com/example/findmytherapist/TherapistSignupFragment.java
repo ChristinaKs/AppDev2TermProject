@@ -74,8 +74,8 @@ public class TherapistSignupFragment extends Fragment {
         therapistLicense = view.findViewById(R.id.licenseTherapistPT);
         password = view.findViewById(R.id.passwordTherapist);
         repass = view.findViewById(R.id.passwordTherapist2);
-        female = (CheckBox) view.findViewById(R.id.femaleClientCB);
-        male = (CheckBox) view.findViewById(R.id.maleClientCB);
+        female = (CheckBox) view.findViewById(R.id.femaleTherapistCB);
+        male = (CheckBox) view.findViewById(R.id.maleTherapistCB);
         phone = (CheckBox) view.findViewById(R.id.phoneCB);
         text = (CheckBox) view.findViewById(R.id.textCB);
         zoom = (CheckBox) view.findViewById(R.id.zoomCB);
@@ -89,6 +89,7 @@ public class TherapistSignupFragment extends Fragment {
                 String firstName = firstname.getText().toString();
                 String lastName = lastname.getText().toString();
                 String license = therapistLicense.getText().toString();
+                //email needs to be added
                 String password2 = password.getText().toString();
                 String repass2 = repass.getText().toString();
                 Boolean isFemale = female.isChecked();
@@ -98,7 +99,32 @@ public class TherapistSignupFragment extends Fragment {
                 Boolean doesZoom = zoom.isChecked();
                 Boolean doesInPerson= person.isChecked();
                 String gender=" ";
+                int doesPhone2;
+                int doesText2;
+                int doesZoom2;
+                int doesInPerson2;
 
+                //if it's platforms is checked were giving value of 1 else giving value of 0
+                if(doesPhone){
+                    doesPhone2 = 1;
+                }else{
+                    doesPhone2 = 0;
+                }
+                if(doesText){
+                    doesText2 = 1;
+                }else{
+                    doesText2 = 0;
+                }
+                if(doesZoom){
+                    doesZoom2 = 1;
+                }else{
+                    doesZoom2 = 0;
+                }
+                if(doesInPerson){
+                    doesInPerson2 = 1;
+                }else{
+                    doesInPerson2 = 0;
+                }
                 //making sure password and confirm password is the same
                 if(!password2.equals(repass2)){
                     Toast.makeText(getActivity(),"Make sure your passwords match",Toast.LENGTH_SHORT).show();
@@ -112,14 +138,14 @@ public class TherapistSignupFragment extends Fragment {
                     gender = "female";
                 }
                 //checking if client already exists else adding to database
-                if(db.checkClientEmailExists(email2)){
+               /* if(db.checkClientEmailExists(email2)){
                     Toast.makeText(getActivity(),"User with this email already exists",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(db.insertClient(email2,password2,firstName,lastName,gender,age2)){
+                    if(db.insertTherapist(license,email2,password2,firstName,lastName,gender,address,doesPhone2,doesText2,doesZoom2,doesInPerson2)){
                         Intent intent = new Intent(getActivity(),ClientProfile.class);
                         startActivity(intent);
                     };
-                }
+                }*/
 
             }
         });
