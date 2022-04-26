@@ -12,7 +12,7 @@
         android:id="@+id/IAmTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="92dp"
         android:text="I am a ..."
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -27,11 +27,12 @@
         android:id="@+id/TherapistButton"
         android:layout_width="230dp"
         android:layout_height="78dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="148dp"
         android:backgroundTint="#8080ff"
         android:text="Licensed Therapist"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/IAmTV"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/IAmTV"
         app:layout_constraintTop_toBottomOf="@+id/IAmTV" />
 

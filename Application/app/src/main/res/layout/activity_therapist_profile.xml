@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
     <EditText
-        android:id="@+id/fNameTherapistDisplayPT"
+        android:id="@+id/therapistFnameDisplay"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -51,7 +51,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/lNameTherapistDisplayPT"
+        android:id="@+id/therapistLnameDisplay"
         android:layout_width="355dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
@@ -66,7 +66,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/genderTherapistDisplayPT"
+        android:id="@+id/genderTherapistDisplay"
         android:layout_width="133dp"
         android:layout_height="42dp"
         android:layout_marginTop="2dp"
@@ -75,7 +75,7 @@
         android:textColor="#ffffff"
         android:textColorHint="#575757"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -91,33 +91,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fNameTherapistDisplayPT" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Age: "
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lNameTherapistDisplayPT" />
+        app:layout_constraintTop_toBottomOf="@+id/therapistFnameDisplay" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="Availabilities: "
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ageTherapistDisplay" />
+        tools:layout_editor_absoluteY="318dp" />
 
 
     <TextView
@@ -132,32 +118,18 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/genderTherapistDisplayPT" />
+        app:layout_constraintTop_toBottomOf="@+id/genderTherapistDisplay" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
         android:layout_marginTop="8dp"
         android:text="Gender: "
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/lNameTherapistDisplayPT" />
-
-    <EditText
-        android:id="@+id/ageTherapistDisplay"
-        android:layout_width="132dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textColorHint="#575757"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/therapistLnameDisplay"
+        tools:layout_editor_absoluteX="17dp" />
 
     <Button
         android:id="@+id/editClientProfileButton"
