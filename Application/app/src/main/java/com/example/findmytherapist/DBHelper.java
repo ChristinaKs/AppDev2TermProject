@@ -22,9 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String THERAPIST_COL_5 = "Therapist_Last_Name";
     private static final String THERAPIST_COL_6 = "Therapist_Gender";
     private static final String THERAPIST_COL_7 = "Therapist_Platform";
-
-    private static final String THERAPIST_COL_8 = "Therapist_Price_Range";
-    private static final String THERAPIST_COL_9 = "Therapist_Therapy_Type";
+    private static final String THERAPIST_COL_8 = "Therapist_Specialities";
 
     //add address here too
     private static final String CLIENT_TABLE = "Client_table";
@@ -105,7 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean insertTherapist (String Therapist_License, String Therapist_Email,String Therapist_Password,
                                     String Therapist_First_Name, String Therapist_Last_Name, String Therapist_Gender,
-                                    String Therapist_Platform, String Therapist_Price_Range, String Therapist_Therapy_Type) {
+                                    String Therapist_Platform, String Therapist_Specialities) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -116,8 +114,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(THERAPIST_COL_5,Therapist_Last_Name);
         contentValues.put(THERAPIST_COL_6,Therapist_Gender);
         contentValues.put(THERAPIST_COL_7,Therapist_Platform);
-        contentValues.put(THERAPIST_COL_8,Therapist_Price_Range);
-        contentValues.put(THERAPIST_COL_9,Therapist_Therapy_Type);
+        contentValues.put(THERAPIST_COL_8,Therapist_Specialities);
         long result = db.insert(THERAPIST_TABLE, null, contentValues);
         if(result == -1)
             return false;
@@ -143,7 +140,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean updateTherapist (String id, String Therapist_Email,String Therapist_First_Name,String Therapist_Last_Name,String Therapist_Gender,
-                                    String Therapist_Platform,String Therapist_Price_Range,String Therapist_Therapy_Type) {
+                                    String Therapist_Platform,String Therapist_Specialities) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(THERAPIST_COL_2, Therapist_Email);
@@ -151,8 +148,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(THERAPIST_COL_5, Therapist_Last_Name);
         contentValues.put(THERAPIST_COL_6, Therapist_Gender);
         contentValues.put(THERAPIST_COL_7, Therapist_Platform);
-        contentValues.put(THERAPIST_COL_8, Therapist_Price_Range);
-        contentValues.put(THERAPIST_COL_9, Therapist_Therapy_Type);
+        contentValues.put(THERAPIST_COL_8, Therapist_Specialities);
         db.update(THERAPIST_TABLE, contentValues, THERAPIST_COL_1+" = ? ", new String[] {id});
         return  true;
     }

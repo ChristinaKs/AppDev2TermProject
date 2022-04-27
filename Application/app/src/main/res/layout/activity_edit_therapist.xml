@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccccff"
+    tools:context=".editTherapist">
+
+
+
+    <TextView
+        android:id="@+id/textView200"
+        android:layout_width="270dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="32dp"
+        android:text="Edit My Profile"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView201"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:text="Email: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView200" />
+
+    <EditText
+        android:id="@+id/therapistEmailEdit"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#575757"
+        android:textColorHint="#575757"
+        app:layout_constraintStart_toStartOf="@+id/textView201"
+        app:layout_constraintTop_toBottomOf="@+id/textView201"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView203"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:text="First Name: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/therapistEmailEdit"
+        app:layout_constraintTop_toBottomOf="@+id/therapistEmailEdit" />
+
+    <EditText
+        android:id="@+id/therapistFnameEdit"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#575757"
+        android:textColorHint="#575757"
+        app:layout_constraintStart_toStartOf="@+id/textView203"
+        app:layout_constraintTop_toBottomOf="@+id/textView203"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView204"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Last Name: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/therapistFnameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/therapistFnameEdit" />
+
+    <EditText
+        android:id="@+id/therapistLnameEdit"
+        android:layout_width="355dp"
+        android:layout_height="39dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#575757"
+        android:textColorHint="#575757"
+        app:layout_constraintStart_toStartOf="@+id/textView204"
+        app:layout_constraintTop_toBottomOf="@+id/textView204"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView205"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Gender: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/therapistLnameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/therapistLnameEdit" />
+
+    <EditText
+        android:id="@+id/genderTherapistEdit"
+        android:layout_width="170dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#575757"
+        android:textColorHint="#575757"
+        app:layout_constraintStart_toStartOf="@+id/textView205"
+        app:layout_constraintTop_toBottomOf="@+id/textView205"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/specialitiesTherapistEdit"
+        android:layout_width="170dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#575757"
+        android:textColorHint="#575757"
+        app:layout_constraintStart_toStartOf="@+id/textView206"
+        app:layout_constraintTop_toBottomOf="@+id/textView206"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView206"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="18dp"
+        android:text="Specialities: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView205"
+        app:layout_constraintTop_toBottomOf="@+id/therapistLnameEdit" />
+
+    <Button
+        android:id="@+id/updateTherapist"
+        android:layout_width="186dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#6666cc"
+        android:text="Update Profile"
+        app:layout_constraintEnd_toEndOf="@+id/inPersonEdit"
+        app:layout_constraintStart_toStartOf="@+id/phoneEdit"
+        app:layout_constraintTop_toBottomOf="@+id/phoneEdit" />
+
+    <Button
+        android:id="@+id/deleteTherapist"
+        android:layout_width="186dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="#6666cc"
+        android:text="Delete Profile"
+        app:layout_constraintEnd_toEndOf="@+id/updateTherapist"
+        app:layout_constraintStart_toStartOf="@+id/updateTherapist"
+        app:layout_constraintTop_toBottomOf="@+id/updateTherapist" />
+
+    <Button
+        android:id="@+id/returnTherapistProfile"
+        android:layout_width="186dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="#6666cc"
+        android:text="Return to Profile"
+        app:layout_constraintEnd_toEndOf="@+id/deleteTherapist"
+        app:layout_constraintStart_toStartOf="@+id/deleteTherapist"
+        app:layout_constraintTop_toBottomOf="@+id/deleteTherapist" />
+
+
+    <TextView
+        android:id="@+id/textView207"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Platform: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/genderTherapistEdit"
+        app:layout_constraintTop_toBottomOf="@+id/genderTherapistEdit" />
+
+    <CheckBox
+        android:id="@+id/phoneEdit"
+        android:layout_width="107dp"
+        android:layout_height="48dp"
+        android:text="Phone call"
+        app:layout_constraintStart_toStartOf="@+id/textView207"
+        app:layout_constraintTop_toBottomOf="@+id/textView207" />
+
+    <CheckBox
+        android:id="@+id/textEdit"
+        android:layout_width="74dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:text="Text"
+        app:layout_constraintStart_toEndOf="@+id/phoneEdit"
+        app:layout_constraintTop_toTopOf="@+id/phoneEdit" />
+
+    <CheckBox
+        android:id="@+id/zoomEdit"
+        android:layout_width="74dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:text="Zoom"
+        app:layout_constraintStart_toEndOf="@+id/textEdit"
+        app:layout_constraintTop_toTopOf="@+id/phoneEdit" />
+
+    <CheckBox
+        android:id="@+id/inPersonEdit"
+        android:layout_width="99dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="5dp"
+        android:text="In person"
+        app:layout_constraintStart_toEndOf="@+id/zoomEdit"
+        app:layout_constraintTop_toTopOf="@+id/phoneEdit" />
+</androidx.constraintlayout.widget.ConstraintLayout>

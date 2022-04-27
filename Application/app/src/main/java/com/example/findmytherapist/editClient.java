@@ -36,6 +36,7 @@ public class editClient extends AppCompatActivity {
         String age = getIntent().getStringExtra("clientAge");
         String gender = getIntent().getStringExtra("clientGender");
 
+        clientEmailEdit.setText(email);
         clientFnameEdit.setText(first);
         clientLnameEdit.setText(last);
         clientAgeEdit.setText(age);

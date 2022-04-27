@@ -71,7 +71,7 @@ public class ClientSignupFragment extends Fragment {
         firstname = view.findViewById(R.id.fNameClientDisplayPT);
         lastname = view.findViewById(R.id.lNameClientPDisplayT);
         email = view.findViewById(R.id.emailClientPT);
-        age = view.findViewById(R.id.ageTherapistDisplay);
+        age = view.findViewById(R.id.ageClientDisplay);
         password = view.findViewById(R.id.clientPassword);
         repass = view.findViewById(R.id.clientPassword2);
         female = (CheckBox) view.findViewById(R.id.femaleClientCB);
