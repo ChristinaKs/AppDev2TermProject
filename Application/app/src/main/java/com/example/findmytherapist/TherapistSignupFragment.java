@@ -1,6 +1,8 @@
 package com.example.findmytherapist;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,7 +22,9 @@ import android.widget.Toast;
  */
 public class TherapistSignupFragment extends Fragment {
 
-    EditText firstname,lastname,therapistLicense,password,repass;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String EMAIL = "email";
+    EditText firstname,lastname,therapistLicense,therapistemail,therapistAddress,password,repass;
     CheckBox female,male,phone,text,zoom,person;
     Button therapistSignUp;
 
@@ -67,11 +71,14 @@ public class TherapistSignupFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_client_signup, container, false);
         firstname = view.findViewById(R.id.fNameCTherapistPT);
         lastname = view.findViewById(R.id.lNameTherapistPT);
         therapistLicense = view.findViewById(R.id.licenseTherapistPT);
+        therapistemail = view.findViewById(R.id.TherapistEmail);
+        therapistAddress = view.findViewById(R.id.therapistAddress);
         password = view.findViewById(R.id.passwordTherapist);
         repass = view.findViewById(R.id.passwordTherapist2);
         female = (CheckBox) view.findViewById(R.id.femaleClientCB);
@@ -89,6 +96,8 @@ public class TherapistSignupFragment extends Fragment {
                 String firstName = firstname.getText().toString();
                 String lastName = lastname.getText().toString();
                 String license = therapistLicense.getText().toString();
+                String address = therapistAddress.getText().toString();
+                String email2 = therapistemail.getText().toString();
                 String password2 = password.getText().toString();
                 String repass2 = repass.getText().toString();
                 Boolean isFemale = female.isChecked();
@@ -98,6 +107,10 @@ public class TherapistSignupFragment extends Fragment {
                 Boolean doesZoom = zoom.isChecked();
                 Boolean doesInPerson= person.isChecked();
                 String gender=" ";
+                Integer phone2;
+                Integer text2;
+                Integer zoom2;
+                Integer person2;
 
                 //making sure password and confirm password is the same
                 if(!password2.equals(repass2)){
@@ -111,12 +124,40 @@ public class TherapistSignupFragment extends Fragment {
                 }else{
                     gender = "female";
                 }
-                //checking if client already exists else adding to database
-                if(db.checkClientEmailExists(email2)){
+
+                //checking which platforms are checked and assigning 1 if true 0 if false
+                if(doesPhone){
+                    phone2 = 1;
+                }else{
+                    phone2 = 0;
+                }
+                if(doesText){
+                    text2 = 1;
+                }else{
+                    text2 = 0;
+                }
+                if(doesZoom){
+                    zoom2 = 1;
+                }else{
+                    zoom2 = 0;
+                }
+                if(doesInPerson){
+                    person2 = 1;
+                }else{
+                    person2 = 0;
+                }
+                //checking if client already exists else adding to database and going immediately to profile
+                if(db.checkTherapistEmailExists(email2)){
                     Toast.makeText(getActivity(),"User with this email already exists",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(db.insertClient(email2,password2,firstName,lastName,gender,age2)){
-                        Intent intent = new Intent(getActivity(),ClientProfile.class);
+                    if(db.insertTherapist(license,email2,password2,firstName,lastName,gender,phone2,text2,zoom2,person2,address)){
+                        //saving the email of person who is logged in
+                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(EMAIL, email2);
+                        editor.apply();
+                        //go to therapists profile
+                        Intent intent = new Intent(getActivity(),TherapistProfile.class);
                         startActivity(intent);
                     };
                 }

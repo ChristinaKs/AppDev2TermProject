@@ -10,15 +10,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 public class TherapistProfile extends AppCompatActivity {
 
     ImageButton therapistProfile, myClients, therapistAppointments;
     Button editTherapistBtn, signOutTherapistBtn, viewTherapistAvailabilitiesBtn;
     EditText therapistEmail, therapistFname, therapistLname, therapistGender;
-    ScrollView therapistSpecialities;
     CheckBox bruh;
-
+    TextView address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +34,7 @@ public class TherapistProfile extends AppCompatActivity {
         therapistFname = findViewById(R.id.therapistFnameDisplay);
         therapistLname = findViewById(R.id.therapistLnameDisplay);
         therapistGender = findViewById(R.id.genderTherapistDisplay);
-        therapistSpecialities = findViewById(R.id.specialitiesSV);
-
+        address = findViewById(R.id.therapistAddress);
 
         editTherapistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +44,7 @@ public class TherapistProfile extends AppCompatActivity {
                 getIntent().putExtra("therapistFname", therapistFname.getText().toString());
                 getIntent().putExtra("therapistLname", therapistLname.getText().toString());
                 getIntent().putExtra("therapistGender", therapistGender.getText().toString());
-                getIntent().putExtra("therapistSpecialities", therapistSpecialities.toString());
+                getIntent().putExtra("therapistAddress", address.getText().toString());
                 startActivity(editTherapistIntent);
             }
         });

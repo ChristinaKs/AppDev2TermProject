@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class ClientProfile extends AppCompatActivity {
 
     ImageButton clientProfile, searchTherapist, clientAppointments;
     Button editClientBtn, signOutBtn;
     EditText clientEmail, clientFname, clientLname, clientAge, clientGender;
-
+    TextView clientAddy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class ClientProfile extends AppCompatActivity {
         clientLname = findViewById(R.id.clientLnameDisplay);
         clientAge = findViewById(R.id.ageClientDisplay);
         clientGender = findViewById(R.id.genderClientDisplay);
+        clientAddy = findViewById(R.id.clientAddress);
 
         editClientBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,7 @@ public class ClientProfile extends AppCompatActivity {
                 getIntent().putExtra("clientLastName", clientLname.getText().toString());
                 getIntent().putExtra("clientAge", clientAge.getText().toString());
                 getIntent().putExtra("clientGender", clientGender.getText().toString());
+                getIntent().putExtra("clientAddress", clientAddy.getText().toString());
                 startActivity(editClientIntent);
             }
         });

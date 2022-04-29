@@ -20,11 +20,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String THERAPIST_COL_4 = "Therapist_First_Name";
     private static final String THERAPIST_COL_5 = "Therapist_Last_Name";
     private static final String THERAPIST_COL_6 = "Therapist_Gender";
-
-    private static final String THERAPIST_COL_7 = "Therapist_Platform";
-    private static final String THERAPIST_COL_8 = "Therapist_Specialities";
-
-    //private static final String THERAPIST_COL_9 = "Therapist_Address";
+    private static final String THERAPIST_COL_7 = "Therapist_OffersPhone";
+    private static final String THERAPIST_COL_8 = "Therapist_OffersText";
+    private static final String THERAPIST_COL_9 = "Therapist_OffersZoom";
+    private static final String THERAPIST_COL_10 = "Therapist_OffersPerson";
+    private static final String THERAPIST_COL_11 = "Therapist_Address";
 
 
     private static final String CLIENT_TABLE = "Client_table";
@@ -51,15 +51,15 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table "
                 + THERAPIST_TABLE + " (Therapist_License Integer primary key, "
                 + "Therapist_Email Text, Therapist_Password Text,Therapist_First_Name Text,Therapist_Last_Name Text,Therapist_Gender Text,"
-                +"Therapist_Address Text, Therapist_Price_Range Text,Therapist_Therapy_Type Text,Therapist_OffersPhone Integer,Therapist_OffersText Integer,Therapist_OffersZoom Integer,Therapist_OfferInPerson Integer)");
+                +"Therapist_OffersPhone Integer,Therapist_OffersText Integer,Therapist_OffersZoom Integer,Therapist_OfferInPerson Integer,Therapist_Address Text)");
 
         sqLiteDatabase.execSQL("create table "
                 + CLIENT_TABLE + " (Client_Id Integer primary key autoincrement, Client_Email Text, Client_Password Text,"
-                +"Client_First_Name Text,Client_Last_Name Text,Client_Gender Text,Client_Age Text,Client_Address)");
+                +"Client_First_Name Text,Client_Last_Name Text,Client_Gender Text,Client_Age Text,Client_Address Text)");
 
         sqLiteDatabase.execSQL("create table "
-                + TIME_TABLE + " Time_Id Integer primary key autoincrement, Therapist_License Integer, Time_IsAvailable Integer,Time_Time Text"
-                + " FOREIGN KEY ("+TIME_COL_2+") REFERENCES "+THERAPIST_TABLE+"("+THERAPIST_COL_1+")");
+                + TIME_TABLE + "(Time_Id Integer primary key autoincrement, Therapist_License Integer, Time_IsAvailable Integer,Time_Time Text)");
+               // + " FOREIGN KEY ("+TIME_COL_2+") REFERENCES "+THERAPIST_TABLE+"("+THERAPIST_COL_1+")");
     }
 
     @Override
@@ -107,7 +107,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public boolean insertTherapist (String Therapist_License, String Therapist_Email,String Therapist_Password,
                                     String Therapist_First_Name, String Therapist_Last_Name, String Therapist_Gender,
-                                    String Therapist_Platform, String Therapist_Specialities) {
+                                    Integer phone, Integer text, Integer zoom, Integer person, String address) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -117,8 +117,11 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(THERAPIST_COL_4,Therapist_First_Name);
         contentValues.put(THERAPIST_COL_5,Therapist_Last_Name);
         contentValues.put(THERAPIST_COL_6,Therapist_Gender);
-        contentValues.put(THERAPIST_COL_7,Therapist_Platform);
-        contentValues.put(THERAPIST_COL_8,Therapist_Specialities);
+        contentValues.put(THERAPIST_COL_7,phone);
+        contentValues.put(THERAPIST_COL_8,text);
+        contentValues.put(THERAPIST_COL_9,zoom);
+        contentValues.put(THERAPIST_COL_10,person);
+        contentValues.put(THERAPIST_COL_11,address);
         long result = db.insert(THERAPIST_TABLE, null, contentValues);
         if(result == -1)
             return false;
@@ -144,20 +147,23 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean updateTherapist (String id, String Therapist_Email,String Therapist_First_Name,String Therapist_Last_Name,String Therapist_Gender,
-                                    String Therapist_Platform,String Therapist_Specialities) {
+                                    Integer phone, Integer text, Integer zoom, Integer person, String address) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(THERAPIST_COL_2, Therapist_Email);
         contentValues.put(THERAPIST_COL_4, Therapist_First_Name);
         contentValues.put(THERAPIST_COL_5, Therapist_Last_Name);
         contentValues.put(THERAPIST_COL_6, Therapist_Gender);
-        contentValues.put(THERAPIST_COL_7, Therapist_Platform);
-        contentValues.put(THERAPIST_COL_8, Therapist_Specialities);
+        contentValues.put(THERAPIST_COL_7, phone);
+        contentValues.put(THERAPIST_COL_8, text);
+        contentValues.put(THERAPIST_COL_9, zoom);
+        contentValues.put(THERAPIST_COL_10, person);
+        contentValues.put(THERAPIST_COL_11, address);
         db.update(THERAPIST_TABLE, contentValues, THERAPIST_COL_1+" = ? ", new String[] {id});
         return  true;
     }
     public boolean updateClient (String id, String Client_Email,String Client_First_Name,String Client_Last_Name,
-                                 String Client_Gender,String Client_Age) {
+                                 String Client_Gender,String Client_Age,String Client_Address) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(CLIENT_COL_2, Client_Email);
@@ -165,6 +171,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(CLIENT_COL_5, Client_Last_Name);
         contentValues.put(CLIENT_COL_6, Client_Gender);
         contentValues.put(CLIENT_COL_7, Client_Age);
+        contentValues.put(CLIENT_COL_8, Client_Address);
         db.update(CLIENT_TABLE, contentValues, CLIENT_COL_1+" = ? ", new String[] {id});
         return  true;
     }
@@ -230,5 +237,19 @@ public class DBHelper extends SQLiteOpenHelper {
         }else{
             return false;
         }
+    }
+
+    public Integer getIdByEmailClient(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select Client_Id from "+CLIENT_TABLE+" where "+CLIENT_COL_2+" =? ",new String[]{email});
+        Integer result = cursor.getInt(0);
+        return result;
+    }
+
+    public Integer getIdByEmailTherapist(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select Therapist_License from "+THERAPIST_TABLE+" where "+THERAPIST_COL_2+" =? ",new String[]{email});
+        Integer result = cursor.getInt(0);
+        return result;
     }
 }

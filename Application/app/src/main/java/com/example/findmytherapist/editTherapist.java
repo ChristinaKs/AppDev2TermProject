@@ -3,19 +3,25 @@ package com.example.findmytherapist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class editTherapist extends AppCompatActivity {
 
     DBHelper db;
-    EditText therapistEmailEdit, therapistFnameEdit, therapistLnameEdit, therapistGenderEdit, therapistSpecialitiesEdit;
+    EditText therapistEmailEdit, therapistFnameEdit, therapistLnameEdit, therapistGenderEdit;
     Button updateTherapist, deleteTherapist, returnToTherapistProfile;
     CheckBox phoneEdit, textEdit, zoomEdit, inPersonEdit;
+    TextView addressTherapist;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String EMAIL = "email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +32,6 @@ public class editTherapist extends AppCompatActivity {
         therapistFnameEdit = findViewById(R.id.therapistFnameEdit);
         therapistLnameEdit = findViewById(R.id.therapistLnameEdit);
         therapistGenderEdit = findViewById(R.id.genderTherapistEdit);
-        therapistSpecialitiesEdit = findViewById(R.id.specialitiesTherapistEdit);
         updateTherapist = findViewById(R.id.updateTherapist);
         deleteTherapist = findViewById(R.id.deleteTherapist);
         returnToTherapistProfile = findViewById(R.id.returnTherapistProfile);
@@ -34,45 +39,57 @@ public class editTherapist extends AppCompatActivity {
         textEdit = findViewById(R.id.textEdit);
         zoomEdit = findViewById(R.id.zoomEdit);
         inPersonEdit = findViewById(R.id.inPersonEdit);
+        addressTherapist = findViewById(R.id.editTherapistAddress);
 
         String email = getIntent().getStringExtra("therapistEmail");
         String first = getIntent().getStringExtra("therapistFirstName");
         String last = getIntent().getStringExtra("therapistLastName");
         String gender = getIntent().getStringExtra("therapistGender");
-        String specialities = getIntent().getStringExtra("therapistSpecialities");
+        String address = getIntent().getStringExtra("therapistAddress");
 
-        StringBuilder platforms = new StringBuilder();
-        String therapistPlatform = "This therapist is available for";
-        String zoom = " zoom";
-        String phone = " phone";
-        String text = " text";
-        String inPerson = " in person";
+        Integer phone;
+        Integer text;
+        Integer zoom;
+        Integer person;
+        //if checked it becomes 1 else 0 (1=true 0=false for the database)
         if(phoneEdit.isChecked()){
-            therapistPlatform.equals(platforms.append(therapistPlatform).append(phone));
+            phone = 1;
+        }else{
+            phone = 0;
         }
         if(textEdit.isChecked()){
-            therapistPlatform.equals(platforms.append(therapistPlatform).append(text));
+            text = 1;
+        }else{
+            text = 0;
         }
         if(zoomEdit.isChecked()){
-            therapistPlatform.equals(platforms.append(therapistPlatform).append(zoom));
+            zoom = 1;
+        }else{
+            zoom = 0;
         }
         if(inPersonEdit.isChecked()){
-            therapistPlatform.equals(platforms.append(therapistPlatform).append(inPerson));
+            person = 1;
+        }else{
+            person = 0;
         }
 
         therapistEmailEdit.setText(email);
         therapistFnameEdit.setText(first);
         therapistLnameEdit.setText(last);
         therapistGenderEdit.setText(gender);
-        therapistSpecialitiesEdit.setText(specialities);
+        addressTherapist.setText(address);
 
         updateTherapist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean isUpdated = db.updateTherapist(/*Need session ID?*/therapistFnameEdit.getText().toString(),
-                        therapistEmailEdit.getText().toString(), therapistFnameEdit.getText().toString(),
-                        therapistLnameEdit.getText().toString(), therapistGenderEdit.getText().toString(),
-                        therapistPlatform, therapistSpecialitiesEdit.getText().toString());
+                //retrieving email of whoever is logged in
+                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                String email = sharedPreferences.getString(EMAIL,"");
+                //retrieving id from email
+                Integer id = db.getIdByEmailTherapist(email);
+                String idToUse = id.toString();
+                boolean isUpdated = db.updateTherapist(idToUse,therapistEmailEdit.getText().toString(),therapistFnameEdit.getText().toString(),
+                        therapistLnameEdit.getText().toString(), therapistGenderEdit.getText().toString(),phone,text,zoom,person,addressTherapist.getText().toString());
                 if(isUpdated = true){
                     Toast.makeText(editTherapist.this, "Profile is updated", Toast.LENGTH_SHORT).show();
                 }

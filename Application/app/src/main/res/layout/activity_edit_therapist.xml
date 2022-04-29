@@ -120,39 +120,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView205"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/specialitiesTherapistEdit"
-        android:layout_width="170dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="2dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="#575757"
-        android:textColorHint="#575757"
-        app:layout_constraintStart_toStartOf="@+id/textView206"
-        app:layout_constraintTop_toBottomOf="@+id/textView206"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/textView206"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="18dp"
-        android:text="Specialities: "
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView205"
-        app:layout_constraintTop_toBottomOf="@+id/therapistLnameEdit" />
-
     <Button
         android:id="@+id/updateTherapist"
         android:layout_width="186dp"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#6666cc"
         android:text="Update Profile"
         app:layout_constraintEnd_toEndOf="@+id/inPersonEdit"
+        app:layout_constraintHorizontal_bias="0.327"
         app:layout_constraintStart_toStartOf="@+id/phoneEdit"
         app:layout_constraintTop_toBottomOf="@+id/phoneEdit" />
 
@@ -160,10 +136,11 @@
         android:id="@+id/deleteTherapist"
         android:layout_width="186dp"
         android:layout_height="55dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#6666cc"
         android:text="Delete Profile"
         app:layout_constraintEnd_toEndOf="@+id/updateTherapist"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/updateTherapist"
         app:layout_constraintTop_toBottomOf="@+id/updateTherapist" />
 
@@ -219,9 +196,31 @@
     <CheckBox
         android:id="@+id/inPersonEdit"
         android:layout_width="99dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginStart="5dp"
         android:text="In person"
         app:layout_constraintStart_toEndOf="@+id/zoomEdit"
         app:layout_constraintTop_toTopOf="@+id/phoneEdit" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="117dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="332dp"
+        android:text="Address:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editTherapistAddress"
+        android:layout_width="170dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="368dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

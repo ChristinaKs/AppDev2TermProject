@@ -8,7 +8,7 @@
     tools:context=".ClientProfile">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="29dp"
@@ -20,17 +20,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="408dp"
+        android:layout_marginEnd="308dp"
+        android:text="Address: "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/clientEmailDisplay"
         android:layout_width="355dp"
         android:layout_height="40dp"
+        android:layout_marginTop="116dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="#575757"
         android:textColorHint="#575757"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
@@ -159,29 +172,21 @@
         android:id="@+id/editClientProfileButton"
         android:layout_width="186dp"
         android:layout_height="55dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="113dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="#6666cc"
         android:text="Edit Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genderClientDisplay" />
+        tools:layout_editor_absoluteY="491dp" />
 
     <Button
         android:id="@+id/signOutClientButton"
         android:layout_width="186dp"
         android:layout_height="55dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="113dp"
+        android:layout_marginStart="208dp"
         android:backgroundTint="#6666cc"
         android:text="Sign Out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editClientProfileButton" />
+        tools:layout_editor_absoluteY="491dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="413dp"
@@ -219,5 +224,15 @@
             app:srcCompat="@android:drawable/ic_menu_month"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/clientAddress"
+        android:layout_width="331dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="440dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

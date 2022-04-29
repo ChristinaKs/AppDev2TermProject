@@ -1,6 +1,8 @@
 package com.example.findmytherapist;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,7 +22,9 @@ import android.widget.Toast;
  */
 public class ClientSignupFragment extends Fragment {
 
-    EditText firstname,lastname,age,email,password,repass;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String EMAIL = "email";
+    EditText firstname,lastname,age,email,password,repass,address;
     CheckBox female,male;
     Button clientSignup;
     // TODO: Rename parameter arguments, choose names that match
@@ -72,6 +76,7 @@ public class ClientSignupFragment extends Fragment {
         lastname = view.findViewById(R.id.lNameClientPDisplayT);
         email = view.findViewById(R.id.emailClientPT);
         age = view.findViewById(R.id.ageClientDisplay);
+        address = view.findViewById(R.id.clientAddress);
         password = view.findViewById(R.id.clientPassword);
         repass = view.findViewById(R.id.clientPassword2);
         female = (CheckBox) view.findViewById(R.id.femaleClientCB);
@@ -86,6 +91,7 @@ public class ClientSignupFragment extends Fragment {
                 String lastName = lastname.getText().toString();
                 String email2 = email.getText().toString();
                 String age2 = age.getText().toString();
+                String address2 = address.getText().toString();
                 String password2 = password.getText().toString();
                 String repass2 = repass.getText().toString();
                 Boolean isFemale = female.isChecked();
@@ -108,7 +114,13 @@ public class ClientSignupFragment extends Fragment {
                 if(db.checkClientEmailExists(email2)){
                     Toast.makeText(getActivity(),"User with this email already exists",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(db.insertClient(email2,password2,firstName,lastName,gender,age2)){
+                    if(db.insertClient(email2,password2,firstName,lastName,gender,age2,address2)){
+                        //saving the email of person who is logged in
+                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(EMAIL, email2);
+                        editor.apply();
+                        //go to client profile
                         Intent intent = new Intent(getActivity(),ClientProfile.class);
                         startActivity(intent);
                     };
