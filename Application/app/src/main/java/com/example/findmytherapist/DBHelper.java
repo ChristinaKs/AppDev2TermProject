@@ -134,9 +134,9 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + THERAPIST_TABLE, null);
         return res;
     }
-    public Cursor getClientDataById(String id) {
+    public Cursor getClientData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + CLIENT_TABLE + " where "+CLIENT_COL_1+" =?",new String[]{id}, null);
+        Cursor res = db.rawQuery("select * from " + CLIENT_TABLE, null);
         return res;
     }
 

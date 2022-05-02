@@ -68,15 +68,7 @@ public class editClient extends AppCompatActivity {
         deleteClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //retrieving email of whoever is logged in
-                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-                String email = sharedPreferences.getString(EMAIL,"");
-                //retrieving id from email
-                Integer id = db.getIdByEmailClient(email);
-                String idToUse = id.toString();
-
-                //deleting client
-                db.deleteClient(idToUse);
+                db.deleteClient(/*Need session ID?*/clientFnameEdit.getText().toString());
                 Intent login = new Intent(editClient.this, MainActivity.class);
                 startActivity(login);
             }
