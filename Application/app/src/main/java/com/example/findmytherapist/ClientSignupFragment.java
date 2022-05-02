@@ -22,8 +22,8 @@ import android.widget.Toast;
  */
 public class ClientSignupFragment extends Fragment {
 
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String EMAIL = "email";
+//    public static final String SHARED_PREFS = "sharedPrefs";
+//    public static final String EMAIL = "email";
     EditText firstname,lastname,age,email,password,repass,address;
     CheckBox female,male;
     Button clientSignup;
@@ -116,10 +116,10 @@ public class ClientSignupFragment extends Fragment {
                 }else{
                     if(db.insertClient(email2,password2,firstName,lastName,gender,age2,address2)){
                         //saving the email of person who is logged in
-                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(EMAIL, email2);
-                        editor.apply();
+//                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedPreferences.edit();
+//                        editor.putString(EMAIL, email2);
+//                        editor.apply();
                         //go to client profile
                         Intent intent = new Intent(getActivity(),ClientProfile.class);
                         startActivity(intent);

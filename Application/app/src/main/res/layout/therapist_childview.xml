@@ -27,31 +27,27 @@
 
     <Button
         android:id="@+id/bookNowBtn"
-        android:layout_width="82dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="15dp"
+        android:layout_width="102dp"
+        android:layout_height="40dp"
         android:text="Book Now"
         android:textAllCaps="false"
         android:textSize="8sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/therapistFnameTV"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="204dp" />
 
     <TextView
-        android:id="@+id/availabilitiesTV"
+        android:id="@+id/genderTV"
         android:layout_width="364dp"
         android:layout_height="39dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="22dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookNowBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/therapistLnameTV" />
 
     <TextView
         android:id="@+id/platformTV"
@@ -59,18 +55,19 @@
         android:layout_height="22dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/availabilitiesTV"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/availabilitiesTV"
-        app:layout_constraintTop_toBottomOf="@+id/availabilitiesTV" />
+        app:layout_constraintEnd_toEndOf="@+id/genderTV"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/genderTV"
+        app:layout_constraintTop_toBottomOf="@+id/genderTV" />
 
     <TextView
         android:id="@+id/specialitiesTV"
         android:layout_width="364dp"
         android:layout_height="60dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="@+id/platformTV"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/platformTV"
         app:layout_constraintTop_toBottomOf="@+id/platformTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

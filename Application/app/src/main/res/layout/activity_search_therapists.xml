@@ -63,7 +63,7 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MyClientsRV"
+        android:id="@+id/searchRV"
         android:layout_width="407dp"
         android:layout_height="555dp"
         android:layout_marginStart="2dp"

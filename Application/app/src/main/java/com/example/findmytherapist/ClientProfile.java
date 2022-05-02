@@ -18,8 +18,8 @@ public class ClientProfile extends AppCompatActivity {
     Button editClientBtn, signOutBtn;
     EditText clientEmail, clientFname, clientLname, clientAge, clientGender;
     TextView clientAddy;
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String EMAIL = "email";
+//    public static final String SHARED_PREFS = "sharedPrefs";
+//    public static final String EMAIL = "email";
     DBHelper db = new DBHelper(this);
 
     @Override
@@ -41,25 +41,28 @@ public class ClientProfile extends AppCompatActivity {
 
 
         //display info of client
-
+        Intent clientProfileIntent = getIntent();
+        Integer userId = clientProfileIntent.getIntExtra("USER_ID",-1);
         //retrieving email of whoever is logged in
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        String email = sharedPreferences.getString(EMAIL,"");
-        //retrieving id from email
-        Integer id = db.getIdByEmailClient(email);
-        String idToUse = id.toString();
-        Cursor result =  db.getClientDataById(idToUse);
+//        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+//        String email = sharedPreferences.getString(EMAIL,"");
+//        //retrieving id from email
+//        Integer id = db.getIdByEmailClient(email);
+//        String idToUse = id.toString();
+//        Cursor result =  db.getClientDataById(idToUse);
 
         editClientBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent editClientIntent = new Intent(ClientProfile.this, editClient.class);
-                getIntent().putExtra("clientEmail", clientEmail.getText().toString());
-                getIntent().putExtra("clientFirstName", clientFname.getText().toString());
-                getIntent().putExtra("clientLastName", clientLname.getText().toString());
-                getIntent().putExtra("clientAge", clientAge.getText().toString());
-                getIntent().putExtra("clientGender", clientGender.getText().toString());
-                getIntent().putExtra("clientAddress", clientAddy.getText().toString());
+                editClientIntent.putExtra("clientEmail", clientEmail.getText().toString());
+                editClientIntent.putExtra("clientFirstName", clientFname.getText().toString());
+                editClientIntent.putExtra("clientLastName", clientLname.getText().toString());
+                editClientIntent.putExtra("clientAge", clientAge.getText().toString());
+                editClientIntent.putExtra("clientGender", clientGender.getText().toString());
+                editClientIntent.putExtra("clientAddress", clientAddy.getText().toString());
+                editClientIntent.putExtra("USER_ID",userId);
+
                 startActivity(editClientIntent);
             }
         });
@@ -68,6 +71,7 @@ public class ClientProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientProfileIntent2 = new Intent(ClientProfile.this, ClientProfile.class);
+                clientProfileIntent2.putExtra("USER_ID",userId);
                 startActivity(clientProfileIntent2);
             }
         });
@@ -76,6 +80,7 @@ public class ClientProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent searchTherapistIntent2 = new Intent(ClientProfile.this, SearchTherapists.class);
+                searchTherapistIntent2.putExtra("USER_ID",userId);
                 startActivity(searchTherapistIntent2);
             }
         });
@@ -84,6 +89,7 @@ public class ClientProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientAppointmentsIntent2 = new Intent(ClientProfile.this, ClientAppointments.class);
+                clientAppointmentsIntent2.putExtra("USER_ID",userId);
                 startActivity(clientAppointmentsIntent2);
             }
         });

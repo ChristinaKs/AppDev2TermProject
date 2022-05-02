@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -44,14 +45,14 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TIME_COL_4 = "Time_Time";
 
     public DBHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 3);
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table "
                 + THERAPIST_TABLE + " (Therapist_License Integer primary key, "
                 + "Therapist_Email Text, Therapist_Password Text,Therapist_First_Name Text,Therapist_Last_Name Text,Therapist_Gender Text,"
-                +"Therapist_OffersPhone Integer,Therapist_OffersText Integer,Therapist_OffersZoom Integer,Therapist_OfferInPerson Integer,Therapist_Address Text)");
+                +"Therapist_OffersPhone Integer,Therapist_OffersText Integer,Therapist_OffersZoom Integer,Therapist_OffersPerson Integer,Therapist_Address Text)");
 
         sqLiteDatabase.execSQL("create table "
                 + CLIENT_TABLE + " (Client_Id Integer primary key autoincrement, Client_Email Text, Client_Password Text,"
@@ -242,7 +243,21 @@ public class DBHelper extends SQLiteOpenHelper {
     public Integer getIdByEmailClient(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select Client_Id from "+CLIENT_TABLE+" where "+CLIENT_COL_2+" =? ",new String[]{email});
-        Integer result = cursor.getInt(0);
+        String cursorString = " ";
+        if(cursor.moveToFirst()){
+            String[] columnNames = cursor.getColumnNames();
+            for(String name: columnNames){
+                cursorString += String.format("%s ][", name);
+                cursorString += "\n";
+            }
+            do{
+                for(String name: columnNames){
+                    cursorString += String.format("%s ][",cursor.getString(cursor.getColumnIndexOrThrow(name)));
+                }
+                cursorString += "\n";
+            }while(cursor.moveToNext());
+        }
+        Integer result = cursor.getInt(cursor.getColumnIndexOrThrow("Client_Id"));
         return result;
     }
 

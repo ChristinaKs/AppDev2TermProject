@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
     EditText email,password;
     DBHelper db;
 
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String EMAIL = "email";
-    SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+    //public static final String SHARED_PREFS = "sharedPrefs";
+    //public static final String EMAIL = "email";
+    //SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         db = new DBHelper(this);
 
 
-        String whoLoggedIn = sharedPreferences.getString(EMAIL,"");
+        /*String whoLoggedIn = sharedPreferences.getString(EMAIL,"");
         if(whoLoggedIn != null){
             //go straight to profile
-        }
+        }*/
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,15 +49,19 @@ public class MainActivity extends AppCompatActivity {
                     //go through databse to see if its a client
                     Boolean validateClient = db.checkClientEmailPassword(loginEmail,loginPass);
                     if(validateClient==true){
-                        saveWhoLoggedIn(loginEmail);
+                        //saveWhoLoggedIn(loginEmail);
+                        Integer id = db.getIdByEmailClient(loginEmail);
                         Intent intent = new Intent(MainActivity.this,ClientProfile.class);
+                        intent.putExtra("USER_ID",id);
                         startActivity(intent);
                     }else{
                         //if it's not a client maybe it's a therapist
                         Boolean validateTherapist = db.checkTherapistEmailPassword(loginEmail,loginPass);
                         if(validateTherapist==true){
-                            saveWhoLoggedIn(loginEmail);
+                            //saveWhoLoggedIn(loginEmail);
+                            Integer id = db.getIdByEmailTherapist(loginEmail);
                             Intent intent = new Intent(MainActivity.this,TherapistProfile.class);
+                            intent.putExtra("USER_ID",id);
                             startActivity(intent);
                         }else{
                             //it's neither or user got their info wrong
@@ -77,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void saveWhoLoggedIn(String email){
+   /* public void saveWhoLoggedIn(String email){
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString(EMAIL, email);
         editor.apply();
-    }
+    }*/
 }

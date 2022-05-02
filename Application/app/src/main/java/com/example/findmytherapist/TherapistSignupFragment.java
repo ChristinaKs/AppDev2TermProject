@@ -1,8 +1,6 @@
 package com.example.findmytherapist;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,8 +20,8 @@ import android.widget.Toast;
  */
 public class TherapistSignupFragment extends Fragment {
 
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String EMAIL = "email";
+//    public static final String SHARED_PREFS = "sharedPrefs";
+//    public static final String EMAIL = "email";
     EditText firstname,lastname,therapistLicense,therapistemail,therapistAddress,password,repass;
     CheckBox female,male,phone,text,zoom,person;
     Button therapistSignUp;
@@ -73,16 +71,16 @@ public class TherapistSignupFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_client_signup, container, false);
-        firstname = view.findViewById(R.id.fNameCTherapistPT);
+        View view = inflater.inflate(R.layout.fragment_therapist_signup, container, false);
+        firstname = view.findViewById(R.id.fNameTherapistPT);
         lastname = view.findViewById(R.id.lNameTherapistPT);
         therapistLicense = view.findViewById(R.id.licenseTherapistPT);
         therapistemail = view.findViewById(R.id.TherapistEmail);
         therapistAddress = view.findViewById(R.id.therapistAddress);
         password = view.findViewById(R.id.passwordTherapist);
         repass = view.findViewById(R.id.passwordTherapist2);
-        female = (CheckBox) view.findViewById(R.id.femaleClientCB);
-        male = (CheckBox) view.findViewById(R.id.maleClientCB);
+        female = (CheckBox) view.findViewById(R.id.femaleTherapistCB);
+        male = (CheckBox) view.findViewById(R.id.maleTherapistCB);
         phone = (CheckBox) view.findViewById(R.id.phoneCB);
         text = (CheckBox) view.findViewById(R.id.textCB);
         zoom = (CheckBox) view.findViewById(R.id.zoomCB);
@@ -152,10 +150,10 @@ public class TherapistSignupFragment extends Fragment {
                 }else{
                     if(db.insertTherapist(license,email2,password2,firstName,lastName,gender,phone2,text2,zoom2,person2,address)){
                         //saving the email of person who is logged in
-                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(EMAIL, email2);
-                        editor.apply();
+//                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedPreferences.edit();
+//                        editor.putString(EMAIL, email2);
+//                        editor.apply();
                         //go to therapists profile
                         Intent intent = new Intent(getActivity(),TherapistProfile.class);
                         startActivity(intent);

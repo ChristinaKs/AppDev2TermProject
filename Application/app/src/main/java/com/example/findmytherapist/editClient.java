@@ -16,8 +16,8 @@ public class editClient extends AppCompatActivity {
     DBHelper db;
     EditText clientEmailEdit, clientFnameEdit, clientLnameEdit, clientAgeEdit, clientGenderEdit,clientAddressEdit;
     Button updateClient, deleteClient, returnToClientProfile;
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String EMAIL = "email";
+//    public static final String SHARED_PREFS = "sharedPrefs";
+//    public static final String EMAIL = "email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,8 @@ public class editClient extends AppCompatActivity {
         String last = getIntent().getStringExtra("clientLastName");
         String age = getIntent().getStringExtra("clientAge");
         String gender = getIntent().getStringExtra("clientGender");
-
+        Integer clientId = getIntent().getIntExtra("USER_ID",-1);
+        String idToUse = clientId.toString();
         clientEmailEdit.setText(email);
         clientFnameEdit.setText(first);
         clientLnameEdit.setText(last);
@@ -49,12 +50,12 @@ public class editClient extends AppCompatActivity {
         updateClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //retrieving email of whoever is logged in
-                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-                String email = sharedPreferences.getString(EMAIL,"");
-                //retrieving id from email
-                Integer id = db.getIdByEmailClient(email);
-                String idToUse = id.toString();
+//                //retrieving email of whoever is logged in
+//                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+//                String email = sharedPreferences.getString(EMAIL,"");
+//                //retrieving id from email
+//                Integer id = db.getIdByEmailClient(email);
+//                String idToUse = id.toString();
                 boolean isUpdated = db.updateClient(idToUse,clientEmailEdit.getText().toString(),clientFnameEdit.getText().toString(),
                          clientLnameEdit.getText().toString(), clientGenderEdit.getText().toString(),
                         clientAgeEdit.getText().toString(),clientAddressEdit.getText().toString());
@@ -68,12 +69,12 @@ public class editClient extends AppCompatActivity {
         deleteClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //retrieving email of whoever is logged in
-                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-                String email = sharedPreferences.getString(EMAIL,"");
-                //retrieving id from email
-                Integer id = db.getIdByEmailClient(email);
-                String idToUse = id.toString();
+//                //retrieving email of whoever is logged in
+//                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+//                String email = sharedPreferences.getString(EMAIL,"");
+//                //retrieving id from email
+//                Integer id = db.getIdByEmailClient(email);
+//                String idToUse = id.toString();
 
                 //deleting client
                 db.deleteClient(idToUse);
@@ -86,6 +87,7 @@ public class editClient extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent returnToClient = new Intent(editClient.this, ClientProfile.class);
+                returnToClient.putExtra("USER_ID",clientId);
                 startActivity(returnToClient);
             }
         });
