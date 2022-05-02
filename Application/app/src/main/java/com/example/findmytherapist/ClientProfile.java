@@ -3,6 +3,8 @@ package com.example.findmytherapist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,10 @@ public class ClientProfile extends AppCompatActivity {
     Button editClientBtn, signOutBtn;
     EditText clientEmail, clientFname, clientLname, clientAge, clientGender;
     TextView clientAddy;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String EMAIL = "email";
+    DBHelper db = new DBHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +38,17 @@ public class ClientProfile extends AppCompatActivity {
         clientAge = findViewById(R.id.ageClientDisplay);
         clientGender = findViewById(R.id.genderClientDisplay);
         clientAddy = findViewById(R.id.clientAddress);
+
+
+        //display info of client
+
+        //retrieving email of whoever is logged in
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        String email = sharedPreferences.getString(EMAIL,"");
+        //retrieving id from email
+        Integer id = db.getIdByEmailClient(email);
+        String idToUse = id.toString();
+        Cursor result =  db.getClientDataById(idToUse);
 
         editClientBtn.setOnClickListener(new View.OnClickListener() {
             @Override
