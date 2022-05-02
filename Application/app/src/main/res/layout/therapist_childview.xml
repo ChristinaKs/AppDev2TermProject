@@ -29,12 +29,13 @@
         android:id="@+id/bookNowBtn"
         android:layout_width="102dp"
         android:layout_height="40dp"
+        android:layout_marginTop="8dp"
         android:text="Book Now"
         android:textAllCaps="false"
         android:textSize="8sp"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="204dp" />
+        app:layout_constraintStart_toStartOf="@+id/specialitiesTV"
+        app:layout_constraintTop_toBottomOf="@+id/specialitiesTV"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/genderTV"

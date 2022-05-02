@@ -243,20 +243,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public Integer getIdByEmailClient(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select Client_Id from "+CLIENT_TABLE+" where "+CLIENT_COL_2+" =? ",new String[]{email});
-        String cursorString = " ";
-        if(cursor.moveToFirst()){
-            String[] columnNames = cursor.getColumnNames();
-            for(String name: columnNames){
-                cursorString += String.format("%s ][", name);
-                cursorString += "\n";
-            }
-            do{
-                for(String name: columnNames){
-                    cursorString += String.format("%s ][",cursor.getString(cursor.getColumnIndexOrThrow(name)));
-                }
-                cursorString += "\n";
-            }while(cursor.moveToNext());
-        }
+        cursor.moveToFirst();
         Integer result = cursor.getInt(cursor.getColumnIndexOrThrow("Client_Id"));
         return result;
     }
@@ -264,7 +251,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public Integer getIdByEmailTherapist(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select Therapist_License from "+THERAPIST_TABLE+" where "+THERAPIST_COL_2+" =? ",new String[]{email});
-        Integer result = cursor.getInt(0);
+        cursor.moveToFirst();
+        Integer result = cursor.getInt(cursor.getColumnIndexOrThrow("Therapist_License") );
         return result;
     }
 }
