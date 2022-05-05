@@ -17,7 +17,7 @@ public class TherapistProfile extends AppCompatActivity {
     ImageButton therapistProfile, myClients, therapistAppointments;
     Button editTherapistBtn, signOutTherapistBtn, viewTherapistAvailabilitiesBtn;
     EditText therapistEmail, therapistFname, therapistLname, therapistGender;
-    CheckBox bruh;
+    CheckBox therapistPhone, therapistText, therapistZoom, therapistPerson;
     TextView address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,10 @@ public class TherapistProfile extends AppCompatActivity {
         therapistFname = findViewById(R.id.therapistFnameDisplay);
         therapistLname = findViewById(R.id.therapistLnameDisplay);
         therapistGender = findViewById(R.id.genderTherapistDisplay);
+        therapistPhone = findViewById(R.id.therapistPhone);
+        therapistText = findViewById(R.id.textCB);
+        therapistZoom = findViewById(R.id.zoomCB);
+        therapistPerson = findViewById(R.id.inPersonCB);
         address = findViewById(R.id.therapistAddress);
 
         editTherapistBtn.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +48,10 @@ public class TherapistProfile extends AppCompatActivity {
                 getIntent().putExtra("therapistFname", therapistFname.getText().toString());
                 getIntent().putExtra("therapistLname", therapistLname.getText().toString());
                 getIntent().putExtra("therapistGender", therapistGender.getText().toString());
+                // PASS CHECKBOX VALUE -- or do they have to re-check what they want? 
+//                if(therapistPhone.isChecked()){
+//                    getIntent().putExtra()
+//                }
                 getIntent().putExtra("therapistAddress", address.getText().toString());
                 startActivity(editTherapistIntent);
             }
