@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class ClientProfile extends AppCompatActivity {
 
     ImageButton clientProfile, searchTherapist, clientAppointments;
-    Button editClientBtn, signOutBtn;
+    Button editClientBtn, signOutClientBtn;
     EditText clientEmail, clientFname, clientLname, clientAge, clientGender;
     TextView clientAddy;
 //    public static final String SHARED_PREFS = "sharedPrefs";
@@ -31,13 +31,14 @@ public class ClientProfile extends AppCompatActivity {
         searchTherapist = (ImageButton) findViewById(R.id.searchTherapistIM);
         clientAppointments = (ImageButton) findViewById(R.id.clientAppointmentIM);
         editClientBtn = findViewById(R.id.editClientProfileButton);
-        signOutBtn = findViewById(R.id.signOutClientButton);
+        signOutClientBtn = findViewById(R.id.signOutClientButton);
         clientEmail = findViewById(R.id.clientEmailDisplay);
         clientFname = findViewById(R.id.clientFnameDisplay);
         clientLname = findViewById(R.id.clientLnameDisplay);
         clientAge = findViewById(R.id.ageClientDisplay);
         clientGender = findViewById(R.id.genderClientDisplay);
         clientAddy = findViewById(R.id.clientAddress);
+
 
 
         //display info of client
@@ -64,6 +65,14 @@ public class ClientProfile extends AppCompatActivity {
                 editClientIntent.putExtra("USER_ID",userId);
 
                 startActivity(editClientIntent);
+            }
+        });
+
+        signOutClientBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signOutClientIntent = new Intent(ClientProfile.this, MainActivity.class);
+                startActivity(signOutClientIntent);
             }
         });
 

@@ -48,12 +48,20 @@ public class TherapistProfile extends AppCompatActivity {
                 getIntent().putExtra("therapistFname", therapistFname.getText().toString());
                 getIntent().putExtra("therapistLname", therapistLname.getText().toString());
                 getIntent().putExtra("therapistGender", therapistGender.getText().toString());
-                // PASS CHECKBOX VALUE -- or do they have to re-check what they want? 
+                // PASS CHECKBOX VALUE -- or do they have to re-check what they want?
 //                if(therapistPhone.isChecked()){
 //                    getIntent().putExtra()
 //                }
                 getIntent().putExtra("therapistAddress", address.getText().toString());
                 startActivity(editTherapistIntent);
+            }
+        });
+
+        signOutTherapistBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent therapistLogoutIntent = new Intent (TherapistProfile.this, MainActivity.class);
+                startActivity(therapistLogoutIntent);
             }
         });
 
