@@ -17,6 +17,7 @@ public class SearchTherapists extends AppCompatActivity {
 
     ImageButton clientProfile, searchTherapist, clientAppointments;
     TherapistAdapter therapistSearch;
+    Integer userId;
     DBHelper db = new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class SearchTherapists extends AppCompatActivity {
         searchTherapist = (ImageButton) findViewById(R.id.searchTherapistIM);
         clientAppointments = (ImageButton) findViewById(R.id.clientAppointmentIM);
 
+        Intent intent = getIntent();
+        userId = intent.getIntExtra("USER_ID",-1);
 
         ArrayList<String> fname = new ArrayList<>();
         ArrayList<String> lname = new ArrayList<>();
@@ -52,6 +55,7 @@ public class SearchTherapists extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientProfileIntent3 = new Intent(SearchTherapists.this, ClientProfile.class);
+                clientProfileIntent3.putExtra("USER_ID",userId);
                 startActivity(clientProfileIntent3);
             }
         });
@@ -60,6 +64,7 @@ public class SearchTherapists extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent searchTherapistIntent3 = new Intent(SearchTherapists.this, SearchTherapists.class);
+                searchTherapistIntent3.putExtra("USER_ID",userId);
                 startActivity(searchTherapistIntent3);
             }
         });
@@ -68,6 +73,7 @@ public class SearchTherapists extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientAppointmentsIntent3 = new Intent(SearchTherapists.this, ClientAppointments.class);
+                clientAppointmentsIntent3.putExtra("USER_ID",userId);
                 startActivity(clientAppointmentsIntent3);
             }
         });

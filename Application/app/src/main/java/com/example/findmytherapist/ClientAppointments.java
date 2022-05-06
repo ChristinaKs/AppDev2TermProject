@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 public class ClientAppointments extends AppCompatActivity {
 
     ImageButton clientProfile, searchTherapist, clientAppointments;
-
+    Integer userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +21,14 @@ public class ClientAppointments extends AppCompatActivity {
         searchTherapist = (ImageButton) findViewById(R.id.searchTherapistIM);
         clientAppointments = (ImageButton) findViewById(R.id.clientAppointmentIM);
 
+        Intent intent = getIntent();
+        userId = intent.getIntExtra("USER_ID",-1);
+
         clientProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent clientProfileIntent = new Intent(ClientAppointments.this, ClientProfile.class);
+                clientProfileIntent.putExtra("USER_ID",userId);
                 startActivity(clientProfileIntent);
             }
         });
@@ -33,6 +37,7 @@ public class ClientAppointments extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent searchTherapistIntent = new Intent(ClientAppointments.this, SearchTherapists.class);
+                searchTherapistIntent.putExtra("USER_ID",userId);
                 startActivity(searchTherapistIntent);
             }
         });
@@ -41,6 +46,7 @@ public class ClientAppointments extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientAppointmentsIntent = new Intent(ClientAppointments.this, ClientAppointments.class);
+                clientAppointmentsIntent.putExtra("USER_ID",userId);
                 startActivity(clientAppointmentsIntent);
             }
         });

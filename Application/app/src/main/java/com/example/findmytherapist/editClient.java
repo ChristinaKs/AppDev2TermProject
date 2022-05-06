@@ -27,6 +27,7 @@ public class editClient extends AppCompatActivity {
         setContentView(R.layout.activity_edit_client);
 
         db = new DBHelper(editClient.this);
+
         clientEmailEdit = findViewById(R.id.clientEmailEdit);
         clientFnameEdit = findViewById(R.id.clientFnameEdit);
         clientLnameEdit = findViewById(R.id.clientLnameEdit);
@@ -62,11 +63,14 @@ public class editClient extends AppCompatActivity {
         }
 
         //check if client changed gender
-        if(clientFemale.isChecked()){
+        //useless
+        /*if(clientFemale.isChecked()){
             genderUpdate = "female";
-        }else{
+        }else if (clientMale.isChecked()){
             genderUpdate = "male";
-        }
+        }else{
+            genderUpdate = " ";
+        }*/
 
         updateClient.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +85,11 @@ public class editClient extends AppCompatActivity {
                 if(clientFemale.isChecked() && clientMale.isChecked()){
                     isUpdated = false;
                     Toast.makeText(editClient.this, "Please select one gender", Toast.LENGTH_SHORT).show();
+                }else if(clientFemale.isChecked()){
+                    genderUpdate = "female";
+                    isUpdated = true;
                 }else{
+                    genderUpdate = "male";
                     isUpdated = true;
                 }
                 if(isUpdated == true){
