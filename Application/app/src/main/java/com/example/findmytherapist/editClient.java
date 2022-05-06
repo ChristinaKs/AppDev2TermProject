@@ -26,6 +26,7 @@ public class editClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_client);
 
+        db = new DBHelper(editClient.this);
         clientEmailEdit = findViewById(R.id.clientEmailEdit);
         clientFnameEdit = findViewById(R.id.clientFnameEdit);
         clientLnameEdit = findViewById(R.id.clientLnameEdit);
