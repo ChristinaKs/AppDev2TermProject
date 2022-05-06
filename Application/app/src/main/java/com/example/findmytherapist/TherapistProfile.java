@@ -91,7 +91,8 @@ public class TherapistProfile extends AppCompatActivity {
         editTherapistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent editTherapistIntent = new Intent(TherapistProfile.this, editClient.class);
+                Intent editTherapistIntent = new Intent(TherapistProfile.this, editTherapist.class);
+                getIntent().putExtra("USER_ID",userId);
                 getIntent().putExtra("therapistEmail", therapistEmail.getText().toString());
                 getIntent().putExtra("therapistFname", therapistFname.getText().toString());
                 getIntent().putExtra("therapistLname", therapistLname.getText().toString());
@@ -100,8 +101,27 @@ public class TherapistProfile extends AppCompatActivity {
 //                if(therapistPhone.isChecked()){
 //                    getIntent().putExtra()
 //                }
+                if(therapistPhone.isChecked()){
+                    getIntent().putExtra("therapistPhone", 1);
+                }else{
+                    getIntent().putExtra("therapistPhone", 0);
+                }
+                if(therapistText.isChecked()){
+                    getIntent().putExtra("therapistText", 1);
+                }else{
+                    getIntent().putExtra("therapistText", 0);
+                }
+                if(therapistZoom.isChecked()){
+                    getIntent().putExtra("therapistZoom", 1);
+                }else{
+                    getIntent().putExtra("therapistZoom", 0);
+                }
+                if(therapistPerson.isChecked()){
+                    getIntent().putExtra("therapistPerson", 1);
+                }else{
+                    getIntent().putExtra("therapistPerson", 0);
+                }
                 getIntent().putExtra("therapistAddress", therapistAddy.getText().toString());
-                getIntent().putExtra("USER_ID",userId);
                 startActivity(editTherapistIntent);
             }
         });

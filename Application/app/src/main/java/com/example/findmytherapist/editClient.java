@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,11 +15,12 @@ import android.widget.Toast;
 public class editClient extends AppCompatActivity {
 
     DBHelper db;
-    EditText clientEmailEdit, clientFnameEdit, clientLnameEdit, clientAgeEdit, clientGenderEdit,clientAddressEdit;
+    EditText clientEmailEdit, clientFnameEdit, clientLnameEdit, clientAgeEdit, clientAddressEdit;
     Button updateClient, deleteClient, returnToClientProfile;
+    CheckBox clientFemale, clientMale;
 //    public static final String SHARED_PREFS = "sharedPrefs";
 //    public static final String EMAIL = "email";
-
+    String genderUpdate = " ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,9 @@ public class editClient extends AppCompatActivity {
         clientFnameEdit = findViewById(R.id.clientFnameEdit);
         clientLnameEdit = findViewById(R.id.clientLnameEdit);
         clientAgeEdit = findViewById(R.id.ageClientEdit);
-        clientGenderEdit = findViewById(R.id.genderClientEdit);
+        clientFemale = findViewById(R.id.editClientFemale);
+        clientMale = findViewById(R.id.editClientMale);
+        //clientGenderEdit = findViewById(R.id.genderClientEdit);
         updateClient = findViewById(R.id.updateClient);
         deleteClient = findViewById(R.id.deleteClient);
         returnToClientProfile = findViewById(R.id.returnClientProfile);
@@ -39,13 +43,29 @@ public class editClient extends AppCompatActivity {
         String last = getIntent().getStringExtra("clientLastName");
         String age = getIntent().getStringExtra("clientAge");
         String gender = getIntent().getStringExtra("clientGender");
+        String address = getIntent().getStringExtra("clientAddress");
         Integer clientId = getIntent().getIntExtra("USER_ID",-1);
         String idToUse = clientId.toString();
+
+        //displaying info
         clientEmailEdit.setText(email);
         clientFnameEdit.setText(first);
         clientLnameEdit.setText(last);
         clientAgeEdit.setText(age);
-        clientGenderEdit.setText(gender);
+        //clientGenderEdit.setText(gender);
+        clientAddressEdit.setText(address);
+        if(gender.equals("female")){
+            clientFemale.setChecked(true);
+        }else{
+            clientMale.setChecked(true);
+        }
+
+        //check if client changed gender
+        if(clientFemale.isChecked()){
+            genderUpdate = "female";
+        }else{
+            genderUpdate = "male";
+        }
 
         updateClient.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,10 +76,19 @@ public class editClient extends AppCompatActivity {
 //                //retrieving id from email
 //                Integer id = db.getIdByEmailClient(email);
 //                String idToUse = id.toString();
-                boolean isUpdated = db.updateClient(idToUse,clientEmailEdit.getText().toString(),clientFnameEdit.getText().toString(),
-                         clientLnameEdit.getText().toString(), clientGenderEdit.getText().toString(),
-                        clientAgeEdit.getText().toString(),clientAddressEdit.getText().toString());
-                if(isUpdated = true){
+                boolean isUpdated;
+                if(clientFemale.isChecked() && clientMale.isChecked()){
+                    isUpdated = false;
+                    Toast.makeText(editClient.this, "Please select one gender", Toast.LENGTH_SHORT).show();
+                }else{
+                    isUpdated = true;
+                }
+                if(isUpdated == true){
+                    isUpdated = db.updateClient(idToUse,clientEmailEdit.getText().toString(),clientFnameEdit.getText().toString(),
+                            clientLnameEdit.getText().toString(), genderUpdate,
+                            clientAgeEdit.getText().toString(),clientAddressEdit.getText().toString());
+                }
+                if(isUpdated == true){
                     Toast.makeText(editClient.this, "Profile is updated", Toast.LENGTH_SHORT).show();
                 }
 

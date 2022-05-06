@@ -41,44 +41,64 @@ public class editTherapist extends AppCompatActivity {
         inPersonEdit = findViewById(R.id.inPersonEdit);
         addressTherapist = findViewById(R.id.editTherapistAddress);
 
+        //getting all the intents
+        Integer id = getIntent().getIntExtra("USER_ID",-1);
+        String idToUse = id.toString();
         String email = getIntent().getStringExtra("therapistEmail");
         String first = getIntent().getStringExtra("therapistFirstName");
         String last = getIntent().getStringExtra("therapistLastName");
         String gender = getIntent().getStringExtra("therapistGender");
+        Integer phone = getIntent().getIntExtra("therapistPhone",-1);
+        Integer text = getIntent().getIntExtra("therapistText",-1);
+        Integer zoom = getIntent().getIntExtra("therapistZoom",-1);
+        Integer person = getIntent().getIntExtra("therapistPerson",-1);
         String address = getIntent().getStringExtra("therapistAddress");
 
-        Integer phone;
-        Integer text;
-        Integer zoom;
-        Integer person;
-        //if checked it becomes 1 else 0 (1=true 0=false for the database)
-        if(phoneEdit.isChecked()){
-            phone = 1;
-        }else{
-            phone = 0;
-        }
-        if(textEdit.isChecked()){
-            text = 1;
-        }else{
-            text = 0;
-        }
-        if(zoomEdit.isChecked()){
-            zoom = 1;
-        }else{
-            zoom = 0;
-        }
-        if(inPersonEdit.isChecked()){
-            person = 1;
-        }else{
-            person = 0;
-        }
-
+        //displaying info
         therapistEmailEdit.setText(email);
         therapistFnameEdit.setText(first);
         therapistLnameEdit.setText(last);
         therapistGenderEdit.setText(gender);
         addressTherapist.setText(address);
+        if(phone == 1){
+            phoneEdit.setChecked(true);
+        }
+        if(text == 1){
+            textEdit.setChecked(true);
+        }
+        if(zoom == 1){
+            zoomEdit.setChecked(true);
+        }
+        if(person == 1){
+            inPersonEdit.setChecked(true);
+        }
 
+        //getting info of what therapist updated in platform
+        Integer updatePhone;
+        Integer updateText;
+        Integer updateZoom;
+        Integer updatePerson;
+        //if checked it becomes 1 else 0 (1=true 0=false for the database)
+        if(phoneEdit.isChecked()){
+            updatePhone = 1;
+        }else{
+            updatePhone = 0;
+        }
+        if(textEdit.isChecked()){
+            updateText = 1;
+        }else{
+            updateText = 0;
+        }
+        if(zoomEdit.isChecked()){
+            updateZoom = 1;
+        }else{
+            updateZoom = 0;
+        }
+        if(inPersonEdit.isChecked()){
+            updatePerson = 1;
+        }else{
+            updatePerson = 0;
+        }
         updateTherapist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,11 +108,11 @@ public class editTherapist extends AppCompatActivity {
                 //retrieving id from email
                 Integer id = db.getIdByEmailTherapist(email);
                 String idToUse = id.toString();*/
-//                boolean isUpdated = db.updateTherapist(idToUse,therapistEmailEdit.getText().toString(),therapistFnameEdit.getText().toString(),
-//                        therapistLnameEdit.getText().toString(), therapistGenderEdit.getText().toString(),phone,text,zoom,person,addressTherapist.getText().toString());
-//                if(isUpdated = true){
-//                    Toast.makeText(editTherapist.this, "Profile is updated", Toast.LENGTH_SHORT).show();
-//                }
+                boolean isUpdated = db.updateTherapist(idToUse,therapistEmailEdit.getText().toString(),therapistFnameEdit.getText().toString(),
+                        therapistLnameEdit.getText().toString(), therapistGenderEdit.getText().toString(),updatePhone,updateText,updateZoom,updatePerson,addressTherapist.getText().toString());
+                if(isUpdated == true){
+                    Toast.makeText(editTherapist.this, "Profile is updated", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
