@@ -20,10 +20,14 @@ public class MyClients extends AppCompatActivity {
         myClients = (ImageButton) findViewById(R.id.myClientsIM);
         therapistAppointments = (ImageButton) findViewById(R.id.therapistAppointmentIM);
 
+        Integer id = getIntent().getIntExtra("USER_ID",-1);
+        String idToUse = id.toString();
+
         therapistProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent clientProfileIntent = new Intent(MyClients.this, TherapistProfile.class);
+                clientProfileIntent.putExtra("USER_ID",id);
                 startActivity(clientProfileIntent);
             }
         });
@@ -32,6 +36,7 @@ public class MyClients extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent searchTherapistIntent = new Intent(MyClients.this, MyClients.class);
+                searchTherapistIntent.putExtra("USER_ID",id);
                 startActivity(searchTherapistIntent);
             }
         });
@@ -40,6 +45,7 @@ public class MyClients extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientAppointmentsIntent = new Intent(MyClients.this, TherapistAppointments.class);
+                clientAppointmentsIntent.putExtra("USER_ID",id);
                 startActivity(clientAppointmentsIntent);
             }
         });
