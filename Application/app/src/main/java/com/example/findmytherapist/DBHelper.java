@@ -106,7 +106,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertTherapist (String Therapist_License, String Therapist_Email,String Therapist_Password,
+    public boolean insertTherapist (Integer Therapist_License, String Therapist_Email,String Therapist_Password,
                                     String Therapist_First_Name, String Therapist_Last_Name, String Therapist_Gender,
                                     Integer phone, Integer text, Integer zoom, Integer person, String address) {
 
@@ -133,6 +133,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getTherapistData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + THERAPIST_TABLE, null);
+        return res;
+    }
+
+    public Cursor getTherapistById(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + THERAPIST_TABLE + " where "+THERAPIST_COL_1+" =?",new String[]{id}, null);
+        //res.moveToFirst();
         return res;
     }
     public Cursor getClientDataById(String id) {

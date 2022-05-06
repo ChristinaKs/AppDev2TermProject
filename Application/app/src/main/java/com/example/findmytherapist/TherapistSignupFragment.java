@@ -94,6 +94,7 @@ public class TherapistSignupFragment extends Fragment {
                 String firstName = firstname.getText().toString();
                 String lastName = lastname.getText().toString();
                 String license = therapistLicense.getText().toString();
+                Integer licenseInt = Integer.valueOf(license);
                 String address = therapistAddress.getText().toString();
                 String email2 = therapistemail.getText().toString();
                 String password2 = password.getText().toString();
@@ -148,14 +149,16 @@ public class TherapistSignupFragment extends Fragment {
                 if(db.checkTherapistEmailExists(email2)){
                     Toast.makeText(getActivity(),"User with this email already exists",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(db.insertTherapist(license,email2,password2,firstName,lastName,gender,phone2,text2,zoom2,person2,address)){
+                    if(db.insertTherapist(licenseInt,email2,password2,firstName,lastName,gender,phone2,text2,zoom2,person2,address)){
                         //saving the email of person who is logged in
 //                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
 //                        SharedPreferences.Editor editor = sharedPreferences.edit();
 //                        editor.putString(EMAIL, email2);
 //                        editor.apply();
                         //go to therapists profile
+
                         Intent intent = new Intent(getActivity(),TherapistProfile.class);
+                        intent.putExtra("USER_ID",licenseInt);
                         startActivity(intent);
                     };
                 }

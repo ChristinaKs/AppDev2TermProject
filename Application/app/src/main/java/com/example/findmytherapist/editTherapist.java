@@ -20,8 +20,8 @@ public class editTherapist extends AppCompatActivity {
     CheckBox phoneEdit, textEdit, zoomEdit, inPersonEdit;
     TextView addressTherapist;
 
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String EMAIL = "email";
+    /*public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String EMAIL = "email";*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,16 +83,16 @@ public class editTherapist extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //retrieving email of whoever is logged in
-                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+                /*SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
                 String email = sharedPreferences.getString(EMAIL,"");
                 //retrieving id from email
                 Integer id = db.getIdByEmailTherapist(email);
-                String idToUse = id.toString();
-                boolean isUpdated = db.updateTherapist(idToUse,therapistEmailEdit.getText().toString(),therapistFnameEdit.getText().toString(),
-                        therapistLnameEdit.getText().toString(), therapistGenderEdit.getText().toString(),phone,text,zoom,person,addressTherapist.getText().toString());
-                if(isUpdated = true){
-                    Toast.makeText(editTherapist.this, "Profile is updated", Toast.LENGTH_SHORT).show();
-                }
+                String idToUse = id.toString();*/
+//                boolean isUpdated = db.updateTherapist(idToUse,therapistEmailEdit.getText().toString(),therapistFnameEdit.getText().toString(),
+//                        therapistLnameEdit.getText().toString(), therapistGenderEdit.getText().toString(),phone,text,zoom,person,addressTherapist.getText().toString());
+//                if(isUpdated = true){
+//                    Toast.makeText(editTherapist.this, "Profile is updated", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         });

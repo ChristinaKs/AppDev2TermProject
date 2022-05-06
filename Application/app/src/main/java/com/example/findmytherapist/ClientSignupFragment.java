@@ -121,7 +121,9 @@ public class ClientSignupFragment extends Fragment {
 //                        editor.putString(EMAIL, email2);
 //                        editor.apply();
                         //go to client profile
+                        Integer id = db.getIdByEmailClient(email2);
                         Intent intent = new Intent(getActivity(),ClientProfile.class);
+                        intent.putExtra("USER_ID",id);
                         startActivity(intent);
                     };
                 }

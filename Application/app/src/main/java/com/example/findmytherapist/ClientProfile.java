@@ -44,6 +44,28 @@ public class ClientProfile extends AppCompatActivity {
         //display info of client
         Intent clientProfileIntent = getIntent();
         Integer userId = clientProfileIntent.getIntExtra("USER_ID",-1);
+        String idToUse = userId.toString();
+        Cursor cursor = db.getClientDataById(idToUse);
+        String email = " ";
+        String fname = " ";
+        String lname = " ";
+        String gender = " ";
+        String age = " ";
+        String address = " ";
+        while(cursor.moveToNext()){
+            email = cursor.getString(1);
+            fname = cursor.getString(3);
+            lname = cursor.getString(4);
+            gender = cursor.getString(5);
+            age = cursor.getString(6);
+            address = cursor.getString(7);
+        }
+        clientEmail.setText(email);
+        clientFname.setText(fname);
+        clientLname.setText(lname);
+        clientGender.setText(gender);
+        clientAge.setText(age);
+        clientAddy.setText(address);
         //retrieving email of whoever is logged in
 //        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
 //        String email = sharedPreferences.getString(EMAIL,"");

@@ -81,7 +81,7 @@ public class calendarTherapist extends AppCompatActivity {
         });
     }
 
-    @Override
+    //@Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, i);
@@ -91,7 +91,7 @@ public class calendarTherapist extends AppCompatActivity {
         dateDisplay.setText(currentDateString);
     }
 
-    @Override
+    //@Override
     public void onTimeSet(TimePicker timePicker, int i, int i1) {
         timeDisplay.setText(" Hour : " + i + " Minute : " + i1);
     }
