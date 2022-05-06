@@ -57,6 +57,14 @@ public class TherapistProfile extends AppCompatActivity {
             }
         });
 
+        viewTherapistAvailabilitiesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewAvailabilities = new Intent(TherapistProfile.this, calendarTherapist.class);
+                startActivity(viewAvailabilities);
+            }
+        });
+
         signOutTherapistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
