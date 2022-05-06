@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +16,10 @@ import android.widget.Toast;
 public class editTherapist extends AppCompatActivity {
 
     DBHelper db;
-    EditText therapistEmailEdit, therapistFnameEdit, therapistLnameEdit, therapistGenderEdit;
+    EditText therapistEditEmail, therapistFnameEdit, therapistLnameEdit, therapistAddress,therapistGenderEdit;
     Button updateTherapist, deleteTherapist, returnToTherapistProfile;
     CheckBox phoneEdit, textEdit, zoomEdit, inPersonEdit,femaleTherapist,maleTherapist;
-    TextView addressTherapist;
+    //TextView addressTherapist;
     String genderUpdate;
     /*public static final String SHARED_PREFS = "sharedPrefs";
     public static final String EMAIL = "email";*/
@@ -30,7 +31,7 @@ public class editTherapist extends AppCompatActivity {
 
         db = new DBHelper(editTherapist.this);
 
-        therapistEmailEdit = findViewById(R.id.therapistEmailEdit);
+        therapistEditEmail = findViewById(R.id.therapistEmailEdit);
         therapistFnameEdit = findViewById(R.id.therapistFnameEdit);
         therapistLnameEdit = findViewById(R.id.therapistLnameEdit);
         femaleTherapist = findViewById(R.id.therapistFemaleEdit);
@@ -43,7 +44,7 @@ public class editTherapist extends AppCompatActivity {
         textEdit = findViewById(R.id.textEdit);
         zoomEdit = findViewById(R.id.zoomEdit);
         inPersonEdit = findViewById(R.id.inPersonEdit);
-        addressTherapist = findViewById(R.id.editTherapistAddress);
+        therapistAddress = findViewById(R.id.editTherapistAddress);
 
         //getting all the intents
         Integer id = getIntent().getIntExtra("USER_ID",-1);
@@ -59,11 +60,11 @@ public class editTherapist extends AppCompatActivity {
 
         String idToUse = id.toString();
         //displaying info
-        therapistEmailEdit.setText(email);
+        therapistEditEmail.setText(email);
         therapistFnameEdit.setText(first);
         therapistLnameEdit.setText(last);
         //therapistGenderEdit.setText(gender);
-        addressTherapist.setText(address);
+        therapistAddress.setText(address);
         if(phone == 1){
             phoneEdit.setChecked(true);
         }
@@ -76,11 +77,11 @@ public class editTherapist extends AppCompatActivity {
         if(person == 1){
             inPersonEdit.setChecked(true);
         }
-        /*if(gender.equals("female")){
+        if(gender.equals("female")){
             femaleTherapist.setChecked(true);
         }else{
             maleTherapist.setChecked(true);
-        }*/
+        }
 
         updateTherapist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,8 +135,8 @@ public class editTherapist extends AppCompatActivity {
                 }
                 //if it's true then actually update it
                 if(isUpdated == true) {
-                    isUpdated = db.updateTherapist(idToUse, therapistEmailEdit.getText().toString(), therapistFnameEdit.getText().toString(),
-                            therapistLnameEdit.getText().toString(), genderUpdate, updatePhone, updateText, updateZoom, updatePerson, addressTherapist.getText().toString());
+                    isUpdated = db.updateTherapist(idToUse, therapistEditEmail.getText().toString(), therapistFnameEdit.getText().toString(),
+                            therapistLnameEdit.getText().toString(), genderUpdate, updatePhone, updateText, updateZoom, updatePerson, therapistAddress.getText().toString());
                 }
                 //if update went through display message
                 if(isUpdated == true){

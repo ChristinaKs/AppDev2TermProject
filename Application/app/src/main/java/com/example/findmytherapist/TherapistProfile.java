@@ -46,6 +46,8 @@ public class TherapistProfile extends AppCompatActivity {
         therapistPerson = findViewById(R.id.inPersonCB);
         therapistPerson.setEnabled(false);
         therapistAddy = findViewById(R.id.therapistAddress);
+
+        //displaying info of therapist
         Intent therapistProfileIntent = getIntent();
         Integer userId = therapistProfileIntent.getIntExtra("USER_ID",-1);
         String idToUse = userId.toString();
@@ -88,40 +90,42 @@ public class TherapistProfile extends AppCompatActivity {
             therapistPerson.setChecked(true);
         }
         therapistAddy.setText(address);
+
         editTherapistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent editTherapistIntent = new Intent(TherapistProfile.this, editTherapist.class);
-                getIntent().putExtra("USER_ID",userId);
-                getIntent().putExtra("therapistEmail", therapistEmail.getText().toString());
-                getIntent().putExtra("therapistFname", therapistFname.getText().toString());
-                getIntent().putExtra("therapistLname", therapistLname.getText().toString());
-                getIntent().putExtra("therapistGender", therapistGender.getText().toString());
+
+                editTherapistIntent.putExtra("therapistEmail", therapistEmail.getText().toString());
+                editTherapistIntent.putExtra("therapistFname", therapistFname.getText().toString());
+                editTherapistIntent.putExtra("therapistLname", therapistLname.getText().toString());
+                editTherapistIntent.putExtra("therapistGender", therapistGender.getText().toString());
                 // PASS CHECKBOX VALUE -- or do they have to re-check what they want?
 //                if(therapistPhone.isChecked()){
 //                    getIntent().putExtra()
 //                }
                 if(therapistPhone.isChecked()){
-                    getIntent().putExtra("therapistPhone", 1);
+                    editTherapistIntent.putExtra("therapistPhone", 1);
                 }else{
-                    getIntent().putExtra("therapistPhone", 0);
+                    editTherapistIntent.putExtra("therapistPhone", 0);
                 }
                 if(therapistText.isChecked()){
-                    getIntent().putExtra("therapistText", 1);
+                    editTherapistIntent.putExtra("therapistText", 1);
                 }else{
-                    getIntent().putExtra("therapistText", 0);
+                    editTherapistIntent.putExtra("therapistText", 0);
                 }
                 if(therapistZoom.isChecked()){
-                    getIntent().putExtra("therapistZoom", 1);
+                    editTherapistIntent.putExtra("therapistZoom", 1);
                 }else{
-                    getIntent().putExtra("therapistZoom", 0);
+                    editTherapistIntent.putExtra("therapistZoom", 0);
                 }
                 if(therapistPerson.isChecked()){
-                    getIntent().putExtra("therapistPerson", 1);
+                    editTherapistIntent.putExtra("therapistPerson", 1);
                 }else{
-                    getIntent().putExtra("therapistPerson", 0);
+                    editTherapistIntent.putExtra("therapistPerson", 0);
                 }
-                getIntent().putExtra("therapistAddress", therapistAddy.getText().toString());
+                editTherapistIntent.putExtra("therapistAddress", therapistAddy.getText().toString());
+                editTherapistIntent.putExtra("USER_ID",userId);
                 startActivity(editTherapistIntent);
             }
         });
@@ -130,7 +134,7 @@ public class TherapistProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent viewAvailabilities = new Intent(TherapistProfile.this, calendarTherapist.class);
-                getIntent().putExtra("USER_ID",userId);
+                viewAvailabilities.putExtra("USER_ID",userId);
                 startActivity(viewAvailabilities);
             }
         });
@@ -147,7 +151,7 @@ public class TherapistProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientProfileIntent = new Intent(TherapistProfile.this, TherapistProfile.class);
-                getIntent().putExtra("USER_ID",userId);
+                clientProfileIntent.putExtra("USER_ID",userId);
                 startActivity(clientProfileIntent);
             }
         });
@@ -156,7 +160,7 @@ public class TherapistProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent searchTherapistIntent = new Intent(TherapistProfile.this, MyClients.class);
-                getIntent().putExtra("USER_ID",userId);
+                searchTherapistIntent.putExtra("USER_ID",userId);
                 startActivity(searchTherapistIntent);
             }
         });
@@ -165,7 +169,7 @@ public class TherapistProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent clientAppointmentsIntent = new Intent(TherapistProfile.this, TherapistAppointments.class);
-                getIntent().putExtra("USER_ID",userId);
+                clientAppointmentsIntent.putExtra("USER_ID",userId);
                 startActivity(clientAppointmentsIntent);
             }
         });

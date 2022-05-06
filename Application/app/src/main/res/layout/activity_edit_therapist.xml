@@ -201,15 +201,6 @@
         app:layout_constraintStart_toEndOf="@+id/textView205"
         app:layout_constraintTop_toBottomOf="@+id/therapistLnameEdit" />
 
-    <TextView
-        android:id="@+id/editTherapistAddress"
-        android:layout_width="170dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="4dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
     <CheckBox
         android:id="@+id/therapistFemaleEdit"
         android:layout_width="wrap_content"
@@ -226,4 +217,15 @@
         android:text="M"
         app:layout_constraintStart_toEndOf="@+id/therapistFemaleEdit"
         app:layout_constraintTop_toBottomOf="@+id/textView205" />
+
+    <EditText
+        android:id="@+id/editTherapistAddress"
+        android:layout_width="167dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
