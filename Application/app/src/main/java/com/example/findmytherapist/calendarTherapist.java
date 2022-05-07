@@ -26,6 +26,7 @@ import java.util.Locale;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 public class calendarTherapist extends AppCompatActivity {
@@ -140,13 +141,25 @@ public class calendarTherapist extends AppCompatActivity {
             public void onClick(View view) {
                 //Need to add date and time to database
                 String dateAndTime = dateDisplay.getText().toString()+" at "+timeDisplay.getText().toString();
-                if(db.insertTime(userId,1,dateAndTime)){
-                    //Need to add dateTimeDisplay into ListView
-                    //get from cursor and then add into arraylist
-                    timeList.add(dateAndTime);
-                    ArrayAdapter arrayAdapter = new ArrayAdapter(calendarTherapist.this,android.R.layout.simple_list_item_1,timeList);
-                    allAvailabilities.setAdapter(arrayAdapter);
+                //check that therapist entered date AND time
+                String emptyDate = dateDisplay.getText().toString();
+                String emptyTime = timeDisplay.getText().toString();
+                if (emptyDate.isEmpty() || emptyTime.isEmpty()){
+                    Toast.makeText(calendarTherapist.this,"Must enter a day and time",Toast.LENGTH_SHORT).show();
                 }
+                //check that time slot doesn't already exist
+                else if(db.checkTherapistTimeSlotExists(idToUse,dateAndTime)){
+                    Toast.makeText(calendarTherapist.this,"This time slot already exists for you",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(db.insertTime(userId,1,dateAndTime)){
+                        //Need to add dateTimeDisplay into ListView
+                        //get from cursor and then add into arraylist
+                        timeList.add(dateAndTime);
+                        ArrayAdapter arrayAdapter = new ArrayAdapter(calendarTherapist.this,android.R.layout.simple_list_item_1,timeList);
+                        allAvailabilities.setAdapter(arrayAdapter);
+                    }
+                }
+
 
             }
         });

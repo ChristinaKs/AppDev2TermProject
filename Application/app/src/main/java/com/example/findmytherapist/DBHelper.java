@@ -205,7 +205,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public Integer getTimeIdByLicenseAndTime(String license,String time){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select Time_Id from "+TIME_TABLE+" where "+TIME_COL_2+" =? and "+TIME_COL_4+" =? ",new String[]{license,time});
-        //cursor.moveToFirst();
+        cursor.moveToFirst();
         Integer result = cursor.getInt(cursor.getColumnIndexOrThrow("Time_Id"));
         return result;
     }
@@ -217,7 +217,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Integer deleteTimeSlot (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TIME_TABLE, TIME_COL_1+" = ?", new String[] {id});
+        return db.delete(TIME_TABLE, TIME_COL_1+" = ? ", new String[] {id});
 
     }
 
@@ -227,6 +227,15 @@ public class DBHelper extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             return true;
         }else {
+            return false;
+        }
+    }
+    public Boolean checkTherapistTimeSlotExists(String id,String time){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " +TIME_TABLE+" where "+TIME_COL_2+" =? and "+TIME_COL_4+" =? ",new String[]{id,time});
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
             return false;
         }
     }

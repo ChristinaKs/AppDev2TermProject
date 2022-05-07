@@ -53,10 +53,10 @@ public class DeleteTimeSlotAdapter extends RecyclerView.Adapter<DeleteTimeSlotAd
                     @Override
                     public void onClick(View view) {
                         //finding time_id in database using the time slot and the therapist id/license number
-                        Integer timeId = db.getTimeIdByLicenseAndTime(id,timeSlot.get(position));
+                        /*Integer timeId = db.getTimeIdByLicenseAndTime(id,timeSlot.get(position));
                         String timeIdToUse = timeId.toString();
                         //deleting it in db
-                        db.deleteTimeSlot(timeIdToUse);
+                        db.deleteTimeSlot(timeIdToUse);*/
                         //deleting it in recyclerview
                         timeSlot.remove(position);
                         notifyItemRemoved(position);
