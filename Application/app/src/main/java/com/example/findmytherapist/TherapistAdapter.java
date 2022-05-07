@@ -17,15 +17,15 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
     ArrayList<String> fNameList = new ArrayList<>();
     ArrayList<String> lNameList = new ArrayList<>();
     ArrayList<String> gender = new ArrayList<>();
-    //ArrayList<String> platformsList = new ArrayList<>();
+    ArrayList<String> platformsList = new ArrayList<>();
     Context nContext;
     LayoutInflater nimflator;
 
-    public TherapistAdapter(ArrayList<String> fNameList, ArrayList<String> lNameList, ArrayList<String> gender, /*ArrayList<String> platformsList, */Context nContext) {
+    public TherapistAdapter(ArrayList<String> fNameList, ArrayList<String> lNameList, ArrayList<String> gender, ArrayList<String> platformsList, Context nContext) {
         this.fNameList = fNameList;
         this.lNameList = lNameList;
         this.gender = gender;
-        //this.platformsList = platformsList;
+        this.platformsList = platformsList;
         this.nContext = nContext;
     }
 
@@ -41,7 +41,7 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
         holder.fName.setText(fNameList.get(position));
         holder.lName.setText(lNameList.get(position));
         holder.gender.setText(gender.get(position));
-        //holder.platforms.setText(platformsList.get(position));
+        holder.platforms.setText(platformsList.get(position));
 
         holder.bookNow.setOnClickListener(new View.OnClickListener() {
             @Override

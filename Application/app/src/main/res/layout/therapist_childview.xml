@@ -27,12 +27,13 @@
 
     <Button
         android:id="@+id/bookNowBtn"
-        android:layout_width="102dp"
+        android:layout_width="144dp"
         android:layout_height="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:text="Book Now"
+        android:text="VIEW TIMES"
         android:textAllCaps="false"
-        android:textSize="8sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/specialitiesTV"
         app:layout_constraintTop_toBottomOf="@+id/specialitiesTV"
         tools:ignore="TouchTargetSizeCheck" />
@@ -71,4 +72,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/platformTV"
         app:layout_constraintTop_toBottomOf="@+id/platformTV" />
+
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="144dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="See location"
+        app:layout_constraintStart_toEndOf="@+id/bookNowBtn"
+        app:layout_constraintTop_toBottomOf="@+id/specialitiesTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+
 import java.util.ArrayList;
 
 public class SearchTherapists extends AppCompatActivity {
@@ -34,19 +35,31 @@ public class SearchTherapists extends AppCompatActivity {
         ArrayList<String> fname = new ArrayList<>();
         ArrayList<String> lname = new ArrayList<>();
         ArrayList<String> gender = new ArrayList<>();
-
+        ArrayList<String> platforms = new ArrayList<>();
         //get fname,lname and gender
         Cursor result = db.getTherapistData();
-        int resultCount = result.getCount();
-        int i = 0;
         while(result.moveToNext()){
+            String platform = "Platforms:";
             fname.add(result.getString(3));
             lname.add(result.getString(4));
             gender.add(result.getString(5));
-            //i++;
+            //if phone equals 1-> add to string string+= " phone" and same with other platforms
+            if(result.getInt(6)== 1){
+                platform +=" phone";
+            }
+            if(result.getInt(7)== 1){
+                platform +=" text";
+            }
+            if(result.getInt(8)== 1){
+                platform +=" zoom";
+            }
+            if(result.getInt(9)== 1){
+                platform +=" inperson";
+            }
+            platforms.add(platform);
         }
         RecyclerView adapter = findViewById(R.id.searchRV);
-        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,this);
+        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,this);
         adapter.setAdapter(therapistAdapter);
         adapter.setLayoutManager(new LinearLayoutManager(this));
 
