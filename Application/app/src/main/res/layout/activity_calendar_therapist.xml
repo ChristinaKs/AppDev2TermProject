@@ -58,7 +58,7 @@
         android:id="@+id/DateTimeTV"
         android:layout_width="187dp"
         android:layout_height="44dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="8dp"
         android:hint="Display The Date And Time"
         app:layout_constraintEnd_toEndOf="@+id/openTimeBtn"
         app:layout_constraintStart_toStartOf="@+id/openDateBtn"
@@ -68,20 +68,21 @@
         android:id="@+id/addAvailabilityBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#6699cc"
         android:text="Add Availability"
         app:layout_constraintEnd_toEndOf="@+id/DateTimeTV"
-        android:backgroundTint="#6699cc"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="@+id/DateTimeTV"
         app:layout_constraintTop_toBottomOf="@+id/DateTimeTV" />
 
     <ListView
         android:id="@+id/allAvailabilitiesLV"
-        android:layout_width="362dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="370dp"
+        android:layout_height="221dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/addAvailabilityBtn"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/addAvailabilityBtn"
         app:layout_constraintTop_toBottomOf="@+id/addAvailabilityBtn" />
 
@@ -89,12 +90,36 @@
         android:id="@+id/backToTherapistProfileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="120dp"
         android:backgroundTint="#6666cc"
         android:text="Back to My Profile"
         app:layout_constraintEnd_toEndOf="@+id/allAvailabilitiesLV"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/allAvailabilitiesLV"
+        app:layout_constraintTop_toBottomOf="@+id/allAvailabilitiesLV" />
+
+    <Button
+        android:id="@+id/editAvailability"
+        android:layout_width="147dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#6699cc"
+        android:text="Edit availability"
+        app:layout_constraintStart_toStartOf="@+id/allAvailabilitiesLV"
+        app:layout_constraintTop_toBottomOf="@+id/allAvailabilitiesLV" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="147dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:text="Remove availability"
+        android:backgroundTint="#6699cc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintStart_toEndOf="@+id/editAvailability"
         app:layout_constraintTop_toBottomOf="@+id/allAvailabilitiesLV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

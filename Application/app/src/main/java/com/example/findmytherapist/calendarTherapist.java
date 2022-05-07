@@ -57,6 +57,14 @@ public class calendarTherapist extends AppCompatActivity {
 
         allAvailabilities = findViewById(R.id.allAvailabilitiesLV);
 
+        Cursor cursor = db.getTimeByTherapistId(idToUse);
+        while(cursor.moveToNext()){
+            timeList.add(cursor.getString(3));
+        }
+        //use arraylist to display times
+        ArrayAdapter arrayAdapter = new ArrayAdapter(calendarTherapist.this,android.R.layout.simple_list_item_1,timeList);
+        allAvailabilities.setAdapter(arrayAdapter);
+
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -134,11 +142,7 @@ public class calendarTherapist extends AppCompatActivity {
                 if(db.insertTime(userId,1,dateAndTime)){
                     //Need to add dateTimeDisplay into ListView
                     //get from cursor and then add into arraylist
-                    Cursor cursor = db.getTimeByTherapistId(idToUse);
-                    while(cursor.moveToNext()){
-                        timeList.add(cursor.getString(3));
-                    }
-                    //use arraylist to display times
+                    timeList.add(dateAndTime);
                     ArrayAdapter arrayAdapter = new ArrayAdapter(calendarTherapist.this,android.R.layout.simple_list_item_1,timeList);
                     allAvailabilities.setAdapter(arrayAdapter);
                 }
