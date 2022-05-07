@@ -30,7 +30,7 @@ import android.os.Bundle;
 
 public class calendarTherapist extends AppCompatActivity {
 
-    Button openDateBtn, openTimeBtn, addAvailabilityBtn, backToTherapistProfileBtn;
+    Button openDateBtn, openTimeBtn, addAvailabilityBtn, backToTherapistProfileBtn,deleteAvailability;
     TextView dateDisplay, timeDisplay, dateTimeDisplay;
     ListView allAvailabilities;
     int hour, minute;
@@ -50,6 +50,7 @@ public class calendarTherapist extends AppCompatActivity {
         openTimeBtn = findViewById(R.id.openTimeBtn);
         addAvailabilityBtn = findViewById(R.id.addAvailabilityBtn);
         backToTherapistProfileBtn = findViewById(R.id.backToTherapistProfileBtn);
+        deleteAvailability = findViewById(R.id.removeAvailability);
 
         dateDisplay = findViewById(R.id.dateDisplayTV);
         timeDisplay = findViewById(R.id.timeDisplayTV);
@@ -150,6 +151,14 @@ public class calendarTherapist extends AppCompatActivity {
             }
         });
 
+        deleteAvailability.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent delete = new Intent(calendarTherapist.this, DeleteTimeSlotTherapist.class);
+                delete.putExtra("USER_ID",userId);
+                startActivity(delete);
+            }
+        });
         backToTherapistProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
