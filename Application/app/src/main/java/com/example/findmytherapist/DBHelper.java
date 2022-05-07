@@ -71,7 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertTime (String Therapist_License, String Time_IsAvailable,String Time_Time) {
+    public boolean insertTime (Integer Therapist_License, Integer Time_IsAvailable,String Time_Time) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -147,7 +147,12 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from " + CLIENT_TABLE + " where "+CLIENT_COL_1+" =?",new String[]{id}, null);
         return res;
     }
-
+    public Cursor getTimeByTherapistId(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TIME_TABLE + " where "+TIME_COL_2+" =?",new String[]{id}, null);
+        //res.moveToFirst();
+        return res;
+    }
     public Cursor getTimeData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TIME_TABLE, null);
