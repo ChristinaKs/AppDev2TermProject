@@ -76,6 +76,7 @@ public class calendarTherapist extends AppCompatActivity {
 
             }
         };
+
         openDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,10 +99,9 @@ public class calendarTherapist extends AppCompatActivity {
                 hour = selectedHour;
                 minute = selectedMinute;
                 timeDisplay.setText(String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
-
-
             }
         };
+
         openTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,6 +172,7 @@ public class calendarTherapist extends AppCompatActivity {
                 startActivity(delete);
             }
         });
+
         backToTherapistProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,6 +182,7 @@ public class calendarTherapist extends AppCompatActivity {
             }
         });
     }
+
     private String makeDateString(int day, int month, int year) {
         return getMonthFormat(month)+" "+day+" "+year;
     }
@@ -224,6 +226,7 @@ public class calendarTherapist extends AppCompatActivity {
         }
         return "JAN";
     }
+
     //@Override
     /*public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
         Calendar c = Calendar.getInstance();

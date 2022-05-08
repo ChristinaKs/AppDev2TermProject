@@ -54,27 +54,17 @@
         app:layout_constraintStart_toStartOf="@+id/timeDisplayTV"
         app:layout_constraintTop_toBottomOf="@+id/timeDisplayTV" />
 
-    <TextView
-        android:id="@+id/DateTimeTV"
-        android:layout_width="187dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="8dp"
-        android:hint="Display The Date And Time"
-        app:layout_constraintEnd_toEndOf="@+id/openTimeBtn"
-        app:layout_constraintStart_toStartOf="@+id/openDateBtn"
-        app:layout_constraintTop_toBottomOf="@+id/openDateBtn" />
-
     <Button
         android:id="@+id/addAvailabilityBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#6699cc"
         android:text="Add Availability"
-        app:layout_constraintEnd_toEndOf="@+id/DateTimeTV"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintStart_toStartOf="@+id/DateTimeTV"
-        app:layout_constraintTop_toBottomOf="@+id/DateTimeTV" />
+        app:layout_constraintEnd_toEndOf="@+id/openTimeBtn"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="@+id/openDateBtn"
+        app:layout_constraintTop_toBottomOf="@+id/openDateBtn" />
 
     <ListView
         android:id="@+id/allAvailabilitiesLV"
@@ -90,13 +80,13 @@
         android:id="@+id/backToTherapistProfileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#6666cc"
         android:text="Back to My Profile"
         app:layout_constraintEnd_toEndOf="@+id/allAvailabilitiesLV"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/allAvailabilitiesLV"
-        app:layout_constraintTop_toBottomOf="@+id/allAvailabilitiesLV" />
+        app:layout_constraintTop_toBottomOf="@+id/removeAvailability" />
 
     <Button
         android:id="@+id/removeAvailability"

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,6 +68,24 @@ public class DeleteTimeSlotAdapter extends RecyclerView.Adapter<DeleteTimeSlotAd
                     @Override
                     public void onClick(View view) {
                         dialog2.dismiss();
+                    }
+                });
+
+                //DELETING A TIME SLOT
+                holder.delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Integer isTimeSlotDeleted = DeleteTimeSlotTherapist.db.deleteTimeSlot(timeSlot.get(holder.getAdapterPosition()));
+                        if(isTimeSlotDeleted > 0){
+                            Toast.makeText(view.getContext(),
+                                    "Time slot removed successfully", Toast.LENGTH_SHORT).show();
+                            timeSlot.remove(timeSlot.get(holder.getAdapterPosition()));
+                            notifyItemRemoved(holder.getAdapterPosition());
+                        } else {
+                            Toast.makeText(view.getContext(),
+                                    "There was an issue with removing the time slot", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
             }

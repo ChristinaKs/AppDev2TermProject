@@ -7,16 +7,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
 public class Booking extends AppCompatActivity {
 
-    DBHelper db;
+    static DBHelper db;
+    //Button bookingBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
+
+        //bookingBtn = findViewById(R.id.bookButton);
 
         db = new DBHelper(Booking.this);
         Intent intent = getIntent();
@@ -38,5 +44,7 @@ public class Booking extends AppCompatActivity {
         BookingAdapter bookingAdapter = new BookingAdapter(timeIdList,times,this);
         adapter.setAdapter(bookingAdapter);
         adapter.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 }

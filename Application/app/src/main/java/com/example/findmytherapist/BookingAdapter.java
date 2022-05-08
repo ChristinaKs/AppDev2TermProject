@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,12 +18,17 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
 
     ArrayList<String> idAdapter = new ArrayList<>();
     ArrayList<String> timeAdapter = new ArrayList<>();
+    ArrayList<String> appointment = new ArrayList<>();
+    ArrayList<String> timeSlot = new ArrayList<>();
+    ArrayList<String> TherapistLicense = new ArrayList<>();
+    ArrayList<String> clientId = new ArrayList<>();
     LayoutInflater minInflater;
     Context context;
 
     public BookingAdapter(ArrayList<String> idAdapter, ArrayList<String> timeAdapter,Context context) {
         this.idAdapter = idAdapter;
         this.timeAdapter = timeAdapter;
+        this.timeSlot = timeSlot;
         this.context = context;
     }
 
@@ -36,13 +42,28 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.timeSlot.setText(timeAdapter.get(position));
-        holder.bookNow.setOnClickListener(new View.OnClickListener() {
+
+ /*       holder.bookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String timeId = idAdapter.get(position);
-                //here is where we send request
+                // delete time slot availability + add the appointment
+                Integer isTimeSlotDeleted = Booking.db.deleteTimeSlot(timeSlot.get(holder.getAdapterPosition()));
+                // inserting appointment doesnt exist
+                boolean insertAppointment = Booking.db.insertAppointment(timeSlot.get(holder.getAdapterPosition()));
+                if(isTimeSlotDeleted > 0 && insertAppointment == true){
+//                    id++
+                    timeSlot.remove(timeSlot.get(holder.getAdapterPosition()));
+                    idAdapter.add(idAdapter.get(holder.getAdapterPosition()));
+                    // how tf am i supposed to add the therapist license and client ID?
+                    notifyItemRemoved(holder.getAdapterPosition());
+
+                } else {
+                    Toast.makeText(view.getContext(),
+                            "There was an issue with removing the time slot", Toast.LENGTH_SHORT).show();
+                }
             }
-        });
+        });*/
     }
 
     @Override
