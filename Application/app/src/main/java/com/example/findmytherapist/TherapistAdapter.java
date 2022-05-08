@@ -21,6 +21,7 @@ import java.util.List;
 
 public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyViewHolder>{
 
+    ArrayList<String> id = new ArrayList<>();
     ArrayList<String> fNameList = new ArrayList<>();
     ArrayList<String> lNameList = new ArrayList<>();
     ArrayList<String> gender = new ArrayList<>();
@@ -29,12 +30,13 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
     Context nContext;
     LayoutInflater nimflator;
 
-    public TherapistAdapter(ArrayList<String> fNameList, ArrayList<String> lNameList, ArrayList<String> gender, ArrayList<String> platformsList, ArrayList<String> address,Context nContext) {
+    public TherapistAdapter(ArrayList<String> fNameList, ArrayList<String> lNameList, ArrayList<String> gender, ArrayList<String> platformsList, ArrayList<String> address,ArrayList<String> id,Context nContext) {
         this.fNameList = fNameList;
         this.lNameList = lNameList;
         this.gender = gender;
         this.platformsList = platformsList;
         this.address = address;
+        this.id = id;
         this.nContext = nContext;
     }
 
@@ -51,7 +53,7 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
         holder.lName.setText(lNameList.get(position));
         holder.gender.setText(gender.get(position));
         holder.platforms.setText(platformsList.get(position));
-        String addy = address.get(position);
+
         holder.location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +80,10 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
             @Override
             public void onClick(View view) {
                 //send to another activity displaying time slots from that therapist
+                String identify = id.get(position);
+                Intent intent = new Intent(nContext,Booking.class);
+                intent.putExtra("USER_ID",identify);
+                nContext.startActivity(intent);
                 // THIS WILL HAVE TO SEND A NOTIFICATION FOR THE THERAPIST IN QUESTION
             }
         });

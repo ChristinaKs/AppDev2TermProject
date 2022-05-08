@@ -33,6 +33,7 @@ public class SearchTherapists extends AppCompatActivity {
         Intent intent = getIntent();
         userId = intent.getIntExtra("USER_ID",-1);
 
+        ArrayList<String> mIds = new ArrayList<>();
         ArrayList<String> fname = new ArrayList<>();
         ArrayList<String> lname = new ArrayList<>();
         ArrayList<String> gender = new ArrayList<>();
@@ -42,6 +43,11 @@ public class SearchTherapists extends AppCompatActivity {
         Cursor result = db.getTherapistData();
         while(result.moveToNext()){
             String platform = "Platforms:";
+            //id in db is integer so we're turning it into a string
+            Integer id = result.getInt(0);
+            String arrayId = id.toString();
+            mIds.add(arrayId);
+            //getting rest of info
             fname.add(result.getString(3));
             lname.add(result.getString(4));
             gender.add(result.getString(5));
@@ -62,7 +68,7 @@ public class SearchTherapists extends AppCompatActivity {
             addresses.add(result.getString(10));
         }
         RecyclerView adapter = findViewById(R.id.searchRV);
-        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,addresses,this);
+        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,addresses,mIds,this);
         adapter.setAdapter(therapistAdapter);
         adapter.setLayoutManager(new LinearLayoutManager(this));
 
