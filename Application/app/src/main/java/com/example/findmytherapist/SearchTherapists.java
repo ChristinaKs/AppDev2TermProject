@@ -12,12 +12,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SearchTherapists extends AppCompatActivity {
 
     ImageButton clientProfile, searchTherapist, clientAppointments;
-    TherapistAdapter therapistSearch;
+    //TherapistAdapter therapistSearch;
     Integer userId;
     DBHelper db = new DBHelper(this);
     @Override
@@ -36,6 +37,7 @@ public class SearchTherapists extends AppCompatActivity {
         ArrayList<String> lname = new ArrayList<>();
         ArrayList<String> gender = new ArrayList<>();
         ArrayList<String> platforms = new ArrayList<>();
+        ArrayList<String> addresses = new ArrayList<>();
         //get fname,lname and gender
         Cursor result = db.getTherapistData();
         while(result.moveToNext()){
@@ -57,9 +59,10 @@ public class SearchTherapists extends AppCompatActivity {
                 platform +=" inperson";
             }
             platforms.add(platform);
+            addresses.add(result.getString(10));
         }
         RecyclerView adapter = findViewById(R.id.searchRV);
-        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,this);
+        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,addresses,this);
         adapter.setAdapter(therapistAdapter);
         adapter.setLayoutManager(new LinearLayoutManager(this));
 
