@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.Password);
         db = new DBHelper(this);
 
-
         /*String whoLoggedIn = sharedPreferences.getString(EMAIL,"");
         if(whoLoggedIn != null){
             //go straight to profile

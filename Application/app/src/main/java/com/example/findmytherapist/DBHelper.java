@@ -44,8 +44,15 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TIME_COL_3 = "Time_IsAvailable";
     private static final String TIME_COL_4 = "Time_Time";
 
+    private static final String APPOINTMENT_TABLE = "Appointment_table";
+    private static final String APPOINTMENT_COL_1 = "Appointment_Id";
+    private static final String APPOINTMENT_COL_2 = "Appointment_Therapist_License";
+    private static final String APPOINTMENT_COL_3 = "Appointment_Client_Id";
+    private static final String APPOINTMENT_COL_4 = "Appointment_Time";
+
+
     public DBHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, 3);
+        super(context, DATABASE_NAME, null, 4);
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -61,6 +68,10 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table "
                 + TIME_TABLE + "(Time_Id Integer primary key autoincrement, Therapist_License Integer, Time_IsAvailable Integer,Time_Time Text)");
                // + " FOREIGN KEY ("+TIME_COL_2+") REFERENCES "+THERAPIST_TABLE+"("+THERAPIST_COL_1+")");
+
+        sqLiteDatabase.execSQL("create table "
+                + APPOINTMENT_TABLE + " (Appointment_Id Integer primary key autoincrement, Appointment_Therapist_License Integer, Appointment_Client_Id Integer,"
+                +"Appointment_Time Text)");
     }
 
     @Override
@@ -68,6 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("Drop table if exists " + THERAPIST_TABLE);
         sqLiteDatabase.execSQL("Drop table if exists " + CLIENT_TABLE);
         sqLiteDatabase.execSQL("Drop table if exists " + TIME_TABLE);
+        sqLiteDatabase.execSQL("Drop table if exists " + APPOINTMENT_TABLE);
         onCreate(sqLiteDatabase);
     }
 
@@ -130,6 +142,22 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
 
     }
+
+    public boolean insertAppointment (Integer Therapist_License, Integer Client_Id,String Time_Time) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(APPOINTMENT_COL_2,Therapist_License);
+        contentValues.put(APPOINTMENT_COL_3,Client_Id);
+        contentValues.put(APPOINTMENT_COL_4,Time_Time);
+        long result = db.insert(APPOINTMENT_TABLE, null, contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+
+    }
+
     public Cursor getTherapistData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + THERAPIST_TABLE, null);
