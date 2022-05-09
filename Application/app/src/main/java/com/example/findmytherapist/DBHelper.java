@@ -334,15 +334,15 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public Cursor getTherapistAppointments(){
+    public Cursor getTherapistAppointments(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select Appointment_Client_Id, Appointment_Time from " + APPOINTMENT_TABLE + " where " + APPOINTMENT_COL_1 + " =?", null);
+        Cursor res = db.rawQuery("select Appointment_Client_Id, Appointment_Time from " + APPOINTMENT_TABLE + " where " + APPOINTMENT_COL_1 + " =?", new String[]{id});
         return res;
     }
 
-    public Cursor getClientAppointments(){
+    public Cursor getClientAppointments(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select Appointment_Therapist_License, Appointment_Time from " + APPOINTMENT_TABLE + " where " + APPOINTMENT_COL_1 + " =?", null);
+        Cursor res = db.rawQuery("select Appointment_Therapist_License, Appointment_Time from " + APPOINTMENT_TABLE + " where " + APPOINTMENT_COL_3 + " =?", new String[]{id});
         return res;
     }
 }

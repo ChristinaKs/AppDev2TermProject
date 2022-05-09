@@ -30,25 +30,26 @@ public class TherapistAppointments extends AppCompatActivity {
         Integer id = getIntent().getIntExtra("USER_ID",-1);
         String idToUse = id.toString();
 
-        ArrayList<String> ClientID = new ArrayList<>();
-        ArrayList<String> AppointmentTime = new ArrayList<>();
-
-        Cursor result = db.getTherapistData();
-        while(result.moveToNext()){
-            //id in db is integer so we're turning it into a string
-            Integer ids = result.getInt(2);
-            String clientId = ids.toString();
-            ClientID.add(clientId);
-
-            //getting rest of info
-            AppointmentTime.add(result.getString(3));
-        }
+//        ArrayList<String> ClientID = new ArrayList<>();
+//        ArrayList<String> AppointmentTime = new ArrayList<>();
+//
+//        db = new DBHelper(TherapistAppointments.this);
+//        Cursor result = db.getTherapistAppointments(idToUse);
+//        while(result.moveToNext()){
+//            //id in db is integer so we're turning it into a string
+//            Integer ids = result.getInt(0);
+//            String clientId = ids.toString();
+//            ClientID.add(clientId);
+//
+//            //getting rest of info
+//            AppointmentTime.add(result.getString(1));
+//        }
 
         //display it all in the recyclerview
-        RecyclerView adapter = findViewById(R.id.therapistAppointmentsRV);
-        ClientAppointmentAdapter clientAppointmentAdapter = new ClientAppointmentAdapter(ClientID, AppointmentTime, this);
-        adapter.setAdapter(clientAppointmentAdapter);
-        adapter.setLayoutManager(new LinearLayoutManager(this));
+//        RecyclerView adapter = findViewById(R.id.therapistAppointmentsRV);
+//        TherapistAppointmentAdapter therapistAppointmentAdapter = new TherapistAppointmentAdapter(ClientID, AppointmentTime, this);
+//        adapter.setAdapter(therapistAppointmentAdapter);
+//        adapter.setLayoutManager(new LinearLayoutManager(this));
 
         therapistProfile.setOnClickListener(new View.OnClickListener() {
             @Override

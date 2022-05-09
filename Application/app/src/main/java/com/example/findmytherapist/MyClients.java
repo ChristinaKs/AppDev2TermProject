@@ -36,25 +36,25 @@ public class MyClients extends AppCompatActivity {
         ArrayList<String> ClientsGender = new ArrayList<>();
 
 
-        Cursor result = db.getTherapistData();
-        while(result.moveToNext()){
-            //id in db is integer so we're turning it into a string
-            Integer ids = result.getInt(0);
-            String arrayId = ids.toString();
-            ClientsID.add(arrayId);
-
-            //getting rest of info
-            ClientsFirstName.add(result.getString(3));
-            ClientsLastName.add(result.getString(4));
-            ClientsAge.add(result.getString(6));
-            ClientsGender.add(result.getString(5));
-        }
-
-        //display it all in the recyclerview
-        RecyclerView adapter = findViewById(R.id.searchRV);
-        MyClientsAdapter myClientsAdapter = new MyClientsAdapter(ClientsFirstName,ClientsLastName,ClientsAge,ClientsGender, this);
-        adapter.setAdapter(myClientsAdapter);
-        adapter.setLayoutManager(new LinearLayoutManager(this));
+//        Cursor result = db.getTherapistData();
+//        while(result.moveToNext()){
+//            //id in db is integer so we're turning it into a string
+//            Integer ids = result.getInt(0);
+//            String arrayId = ids.toString();
+//            ClientsID.add(arrayId);
+//
+//            //getting rest of info
+//            ClientsFirstName.add(result.getString(3));
+//            ClientsLastName.add(result.getString(4));
+//            ClientsAge.add(result.getString(6));
+//            ClientsGender.add(result.getString(5));
+//        }
+//
+//        //display it all in the recyclerview
+//        RecyclerView adapter = findViewById(R.id.searchRV);
+//        MyClientsAdapter myClientsAdapter = new MyClientsAdapter(ClientsFirstName,ClientsLastName,ClientsAge,ClientsGender, this);
+//        adapter.setAdapter(myClientsAdapter);
+//        adapter.setLayoutManager(new LinearLayoutManager(this));
 
         therapistProfile.setOnClickListener(new View.OnClickListener() {
             @Override
