@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/2047623/Documents/GitHub/AppDev2TermProject/Application/app/src/main/res/layout/activity_therapist_appointments.xml" value="0.21354166666666666" />
+        <entry key="..\:/Users/2047623/Documents/GitHub/AppDev2TermProject/Application/app/src/main/res/layout/therapist_appointments_childview.xml" value="0.5" />
         <entry key="..\:/Users/kalla/Desktop/App Dev 2/TermProject/Application/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/kalla/Desktop/App Dev 2/TermProject/Application/app/src/main/res/layout/activity_sign_up_choice.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kalla/Desktop/App Dev 2/TermProject/Application/app/src/main/res/layout/fragment_client_signup.xml" value="0.25416666666666665" />

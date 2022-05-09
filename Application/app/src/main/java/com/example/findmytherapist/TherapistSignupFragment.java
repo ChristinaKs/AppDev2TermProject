@@ -114,7 +114,7 @@ public class TherapistSignupFragment extends Fragment {
                 //making sure password and confirm password is the same
                 if(!password2.equals(repass2)){
                     Toast.makeText(getActivity(),"Make sure your passwords match",Toast.LENGTH_SHORT).show();
-                }
+                }else
                 //checking gender
                 if(isMale==true && isFemale==true){
                     Toast.makeText(getActivity(),"Please choose one gender",Toast.LENGTH_SHORT).show();

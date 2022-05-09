@@ -336,7 +336,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getTherapistAppointments(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select Appointment_Client_Id, Appointment_Time from " + APPOINTMENT_TABLE + " where " + APPOINTMENT_COL_1 + " =?", new String[]{id});
+        Cursor res = db.rawQuery("select Appointment_Client_Id, Appointment_Time from " + APPOINTMENT_TABLE + " where " + APPOINTMENT_COL_2 + " =?", new String[]{id});
         return res;
     }
 
