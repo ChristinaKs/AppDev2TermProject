@@ -15,16 +15,16 @@ import java.util.ArrayList;
 public class TherapistAppointmentAdapter extends RecyclerView.Adapter<TherapistAppointmentAdapter.MyViewHolder>{
 
     ArrayList<String> clientID = new ArrayList<>();
-    ArrayList<String> appointmentTime = new ArrayList<>();
+    ArrayList<String> appointmentTimeList = new ArrayList<>();
     Context mContext;
-    Context context;
+    //Context context;
     LayoutInflater minflator;
 
     public TherapistAppointmentAdapter(ArrayList<String> clientID, ArrayList<String> appointmentTime,
                                       Context mContext){
 
         this.clientID = clientID;
-        this.appointmentTime = appointmentTime;
+        this.appointmentTimeList = appointmentTime;
         this.mContext = mContext;
     }
 
@@ -37,25 +37,23 @@ public class TherapistAppointmentAdapter extends RecyclerView.Adapter<TherapistA
 
     @Override
     public void onBindViewHolder(@NonNull TherapistAppointmentAdapter.MyViewHolder holder, int position){
-        DBHelper db = new DBHelper(context);
+        DBHelper db = new DBHelper(mContext);
+        holder.appointmentTime.setText(appointmentTimeList.get(position));
+        String clientName = "";
 
-        String clientID = "";
-        String appointmentTime = "";
-
-        Cursor cursor = db.getTherapistAppointments();
+        //need to get client first name
+        Cursor cursor = db.getClientDataById(clientID.get(position));
 
         while(cursor.moveToNext()){
-            clientID = cursor.getString(2);
-            appointmentTime = cursor.getString(3);
+            clientName = cursor.getString(3);
         }
 
-        holder.clientID.setText(clientID);
-        holder.appointmentTime.setText(appointmentTime);
+        holder.clientID.setText(clientName);
     }
 
     @Override
     public int getItemCount(){
-        return appointmentTime.size();
+        return appointmentTimeList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
