@@ -37,20 +37,20 @@ public class ClientAppointmentAdapter extends RecyclerView.Adapter<ClientAppoint
 
     @Override
     public void onBindViewHolder(@NonNull ClientAppointmentAdapter.MyViewHolder holder, int position){
-        DBHelper db = new DBHelper(context);
-
-        String therapistLicense = "";
-        String appointmentTime = "";
-
-        Cursor cursor = db.getTherapistAppointments();
-
-        while(cursor.moveToNext()){
-            therapistLicense = cursor.getString(2);
-            appointmentTime = cursor.getString(3);
-        }
-
-        holder.therapistLicense.setText(therapistLicense);
-        holder.appointmentTime.setText(appointmentTime);
+//        DBHelper db = new DBHelper(context);
+//
+//        String therapistLicense = "";
+//        String appointmentTime = "";
+//
+//        Cursor cursor = db.getTherapistAppointments();
+//
+//        while(cursor.moveToNext()){
+//            therapistLicense = cursor.getString(2);
+//            appointmentTime = cursor.getString(3);
+//        }
+//
+//        holder.therapistLicense.setText(therapistLicense);
+//        holder.appointmentTime.setText(appointmentTime);
     }
 
     @Override
