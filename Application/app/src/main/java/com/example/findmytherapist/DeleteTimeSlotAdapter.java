@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class DeleteTimeSlotAdapter extends RecyclerView.Adapter<DeleteTimeSlotAdapter.ViewHolder> {
 
-
+//this is the adapter for the recyclerview when a therapist wants to delete a time slot
     ArrayList<String> timeSlot = new ArrayList<>();
     Context context;
     LayoutInflater minInflator;
@@ -46,6 +46,7 @@ public class DeleteTimeSlotAdapter extends RecyclerView.Adapter<DeleteTimeSlotAd
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //poping up a alert dialog
                 AlertDialog.Builder dialog = new AlertDialog.Builder(context);
                 View popupView = minInflator.from(context).inflate(R.layout.popup_delete_time_slot,null);
                 Button yes = (Button)popupView.findViewById(R.id.yesButton);
@@ -53,6 +54,7 @@ public class DeleteTimeSlotAdapter extends RecyclerView.Adapter<DeleteTimeSlotAd
                 dialog.setView(popupView);
                 Dialog dialog2 = dialog.create();
                 dialog2.show();
+                //if yes then remove the time slot
                 yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

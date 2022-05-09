@@ -46,10 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 if(loginEmail.equals("") || loginPass.equals("")){
                     Toast.makeText(MainActivity.this,"Information missing",Toast.LENGTH_SHORT).show();
                 }else{
-                    //go through databse to see if its a client
+                    //go through database to see if its a client
                     Boolean validateClient = db.checkClientEmailPassword(loginEmail,loginPass);
                     if(validateClient==true){
                         //saveWhoLoggedIn(loginEmail);
+                        //if it's client then log in
                         Integer id = db.getIdByEmailClient(loginEmail);
                         Intent intent = new Intent(MainActivity.this,ClientProfile.class);
                         intent.putExtra("USER_ID",id);
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         Boolean validateTherapist = db.checkTherapistEmailPassword(loginEmail,loginPass);
                         if(validateTherapist==true){
                             //saveWhoLoggedIn(loginEmail);
+                            //if it is a therapist then log in
                             Integer id = db.getIdByEmailTherapist(loginEmail);
                             Intent intent = new Intent(MainActivity.this,TherapistProfile.class);
                             intent.putExtra("USER_ID",id);

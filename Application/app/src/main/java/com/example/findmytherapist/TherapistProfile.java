@@ -104,6 +104,7 @@ public class TherapistProfile extends AppCompatActivity {
 //                if(therapistPhone.isChecked()){
 //                    getIntent().putExtra()
 //                }
+                //if its checked pass value of 1 else pass value of 0
                 if(therapistPhone.isChecked()){
                     editTherapistIntent.putExtra("therapistPhone", 1);
                 }else{

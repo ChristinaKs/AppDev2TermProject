@@ -21,6 +21,7 @@ public class ClientAppointments extends AppCompatActivity {
         searchTherapist = (ImageButton) findViewById(R.id.searchTherapistIM);
         clientAppointments = (ImageButton) findViewById(R.id.clientAppointmentIM);
 
+        //id of client
         Intent intent = getIntent();
         userId = intent.getIntExtra("USER_ID",-1);
 

@@ -82,21 +82,26 @@ public class editClient extends AppCompatActivity {
 //                Integer id = db.getIdByEmailClient(email);
 //                String idToUse = id.toString();
                 boolean isUpdated;
+                //if female and male are checked display error message
                 if(clientFemale.isChecked() && clientMale.isChecked()){
                     isUpdated = false;
                     Toast.makeText(editClient.this, "Please select one gender", Toast.LENGTH_SHORT).show();
+                //if female is checked then assign female
                 }else if(clientFemale.isChecked()){
                     genderUpdate = "female";
                     isUpdated = true;
+                //if male is checked then assign male
                 }else{
                     genderUpdate = "male";
                     isUpdated = true;
                 }
+                //if user checks one and doesn't get an error then update the profile
                 if(isUpdated == true){
                     isUpdated = db.updateClient(idToUse,clientEmailEdit.getText().toString(),clientFnameEdit.getText().toString(),
                             clientLnameEdit.getText().toString(), genderUpdate,
                             clientAgeEdit.getText().toString(),clientAddressEdit.getText().toString());
                 }
+                //if update goes through then display message
                 if(isUpdated == true){
                     Toast.makeText(editClient.this, "Profile is updated", Toast.LENGTH_SHORT).show();
                 }

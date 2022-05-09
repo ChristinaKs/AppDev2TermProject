@@ -21,7 +21,7 @@ import java.util.List;
 
 public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyViewHolder>{
 
-    ArrayList<String> id = new ArrayList<>();
+    ArrayList<String> id = new ArrayList<>();//id of therapist
     ArrayList<String> fNameList = new ArrayList<>();
     ArrayList<String> lNameList = new ArrayList<>();
     ArrayList<String> gender = new ArrayList<>();
@@ -37,8 +37,8 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
         this.gender = gender;
         this.platformsList = platformsList;
         this.address = address;
-        this.id = id;
-        this.userId = userId;
+        this.id = id;//id of therapist
+        this.userId = userId;//id of client
         this.nContext = nContext;
     }
 
@@ -66,6 +66,7 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
                 try {
                     addressList = geocoder.getFromLocationName(addy,1);
                     if(addressList != null){
+                        //get longitude and latitude of address
                         double doubleLat = addressList.get(0).getLatitude();
                         double doubleLong= addressList.get(0).getLongitude();
                         Intent intent = new Intent(nContext,MapsActivity.class);
@@ -82,7 +83,7 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
             @Override
             public void onClick(View view) {
                 //send to another activity displaying time slots from that therapist
-                String identify = id.get(position);
+                String identify = id.get(position);//get id of therapist
                 Intent intent = new Intent(nContext,Booking.class);
                 intent.putExtra("THERAPIST_ID",identify);//therapist id
                 intent.putExtra("USER_ID",userId);//id of client

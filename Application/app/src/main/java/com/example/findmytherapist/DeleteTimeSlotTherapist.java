@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class DeleteTimeSlotTherapist extends AppCompatActivity {
 
+    //this will display recycler view of all time slots and in the adapter therapist can delete a time slot
     ArrayList<String> mTimeSlot = new ArrayList<>();
     RecyclerView rv;
     DBHelper db = new DBHelper(this);
@@ -31,6 +32,7 @@ public class DeleteTimeSlotTherapist extends AppCompatActivity {
             mTimeSlot.add(cursor.getString(3));
         }
 
+        //setting up recyclerview
         DeleteTimeSlotAdapter adapter = new DeleteTimeSlotAdapter(mTimeSlot,DeleteTimeSlotTherapist.this,idToUse);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(DeleteTimeSlotTherapist.this));

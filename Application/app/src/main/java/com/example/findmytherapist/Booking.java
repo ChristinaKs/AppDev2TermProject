@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class Booking extends AppCompatActivity {
 
+    //booking class that will use booking adapter for its recycler view
     static DBHelper db;
     //Button bookingBtn;
 
@@ -25,6 +26,7 @@ public class Booking extends AppCompatActivity {
         //bookingBtn = findViewById(R.id.bookButton);
 
         db = new DBHelper(Booking.this);
+        //getting clientid and therapist id from when user clicks  "view times"
         Intent intent = getIntent();
         String therapistId = intent.getStringExtra("THERAPIST_ID");
         String clientId = intent.getStringExtra("USER_ID");
@@ -32,6 +34,7 @@ public class Booking extends AppCompatActivity {
         ArrayList<String> times = new ArrayList<>();
         ArrayList<String> timeIdList = new ArrayList<>();
 
+        //getting all the times from that therapist and adding the id and the times into array list
         Cursor cursor = db.getTimeByTherapistId(therapistId);
         while(cursor.moveToNext()){
             Integer id = cursor.getInt(0);
@@ -40,7 +43,7 @@ public class Booking extends AppCompatActivity {
             times.add(cursor.getString(3));
         }
 
-        //recyclerview adapter and put in arraylist of time and id
+        //recyclerview adapter and put in arraylist of time,time id,therapist id and client id
         RecyclerView adapter = findViewById(R.id.bookRecyclerView);
         BookingAdapter bookingAdapter = new BookingAdapter(timeIdList,times,therapistId,clientId,this);
         adapter.setAdapter(bookingAdapter);

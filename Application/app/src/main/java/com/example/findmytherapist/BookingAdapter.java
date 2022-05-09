@@ -16,12 +16,13 @@ import java.util.ArrayList;
 
 public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHolder>{
 
-    ArrayList<String> idAdapter = new ArrayList<>();
-    ArrayList<String> timeAdapter = new ArrayList<>();
-    ArrayList<String> appointment = new ArrayList<>();
-    ArrayList<String> timeSlot = new ArrayList<>();
-    ArrayList<String> TherapistLicense = new ArrayList<>();
-    //ArrayList<String> clientId = new ArrayList<>();
+    //arraylists from the booking class
+    ArrayList<String> idAdapter = new ArrayList<>();//id of the time slot
+    ArrayList<String> timeAdapter = new ArrayList<>();//the time slot itself
+//    ArrayList<String> appointment = new ArrayList<>();
+//    ArrayList<String> timeSlot = new ArrayList<>();
+//    ArrayList<String> TherapistLicense = new ArrayList<>();
+//    ArrayList<String> clientId = new ArrayList<>();
     LayoutInflater minInflater;
     Context context;
 
@@ -47,16 +48,17 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         DBHelper db = new DBHelper(context);
-        holder.timeSlot.setText(timeAdapter.get(position));
+        holder.timeSlot.setText(timeAdapter.get(position));//displaying timeslots
         holder.bookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String timeId = idAdapter.get(position);
                 // delete time slot availability + add the appointment
+                String timeId = idAdapter.get(position);
                 db.deleteTimeSlot(timeId);
                 // inserting appointment
                 Integer therapist = Integer.valueOf(therapistId);
                 Integer client = Integer.valueOf(clientId);
+                //insert appointment with therapist id and client id passed on from earlier
                 boolean  isBooked = db.insertAppointment(therapist,client,timeAdapter.get(position));
                 if(isBooked){
                     Toast.makeText(context,"Appointment booked!",Toast.LENGTH_SHORT).show();

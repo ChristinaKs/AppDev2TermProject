@@ -40,7 +40,7 @@ public class SearchTherapists extends AppCompatActivity {
         ArrayList<String> gender = new ArrayList<>();
         ArrayList<String> platforms = new ArrayList<>();
         ArrayList<String> addresses = new ArrayList<>();
-        //get fname,lname and gender
+        //get fname,lname, gender and platforms
         Cursor result = db.getTherapistData();
         while(result.moveToNext()){
             String platform = "Platforms:";
@@ -68,6 +68,7 @@ public class SearchTherapists extends AppCompatActivity {
             platforms.add(platform);
             addresses.add(result.getString(10));
         }
+        //display it all in the recyclerview
         RecyclerView adapter = findViewById(R.id.searchRV);
         TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,addresses,mIds,idToUse,this);
         adapter.setAdapter(therapistAdapter);

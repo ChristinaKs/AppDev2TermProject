@@ -59,6 +59,7 @@ public class calendarTherapist extends AppCompatActivity {
 
         allAvailabilities = findViewById(R.id.allAvailabilitiesLV);
 
+        //getting all the times from that therapist and putting it into arraylist
         Cursor cursor = db.getTimeByTherapistId(idToUse);
         while(cursor.moveToNext()){
             timeList.add(cursor.getString(3));
@@ -67,6 +68,7 @@ public class calendarTherapist extends AppCompatActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter(calendarTherapist.this,android.R.layout.simple_list_item_1,timeList);
         allAvailabilities.setAdapter(arrayAdapter);
 
+        //listneer for date picker
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -77,6 +79,7 @@ public class calendarTherapist extends AppCompatActivity {
             }
         };
 
+        //opening date picker
         openDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +96,7 @@ public class calendarTherapist extends AppCompatActivity {
             }
         });
 
+        //listener for time picker
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
@@ -102,6 +106,7 @@ public class calendarTherapist extends AppCompatActivity {
             }
         };
 
+        //openening time picker
         openTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -183,6 +188,7 @@ public class calendarTherapist extends AppCompatActivity {
         });
     }
 
+    //making it so the time slot is readable by everyone
     private String makeDateString(int day, int month, int year) {
         return getMonthFormat(month)+" "+day+" "+year;
     }
