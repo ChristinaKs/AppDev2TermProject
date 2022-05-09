@@ -32,6 +32,7 @@ public class SearchTherapists extends AppCompatActivity {
 
         Intent intent = getIntent();
         userId = intent.getIntExtra("USER_ID",-1);
+        String idToUse = userId.toString();
 
         ArrayList<String> mIds = new ArrayList<>();
         ArrayList<String> fname = new ArrayList<>();
@@ -68,7 +69,7 @@ public class SearchTherapists extends AppCompatActivity {
             addresses.add(result.getString(10));
         }
         RecyclerView adapter = findViewById(R.id.searchRV);
-        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,addresses,mIds,this);
+        TherapistAdapter therapistAdapter = new TherapistAdapter(fname,lname,gender,platforms,addresses,mIds,idToUse,this);
         adapter.setAdapter(therapistAdapter);
         adapter.setLayoutManager(new LinearLayoutManager(this));
 

@@ -158,6 +158,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public Integer deleteApp (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(APPOINTMENT_TABLE, APPOINTMENT_COL_1+" = ? ", new String[] {id});
+
+    }
     public Cursor getTherapistData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + THERAPIST_TABLE, null);

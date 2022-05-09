@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         if(whoLoggedIn != null){
             //go straight to profile
         }*/
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

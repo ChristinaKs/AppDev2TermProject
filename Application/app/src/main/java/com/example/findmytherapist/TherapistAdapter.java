@@ -29,14 +29,16 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
     ArrayList<String> address = new ArrayList<>();
     Context nContext;
     LayoutInflater nimflator;
-
-    public TherapistAdapter(ArrayList<String> fNameList, ArrayList<String> lNameList, ArrayList<String> gender, ArrayList<String> platformsList, ArrayList<String> address,ArrayList<String> id,Context nContext) {
+    //id of client being passed on
+    String userId;
+    public TherapistAdapter(ArrayList<String> fNameList, ArrayList<String> lNameList, ArrayList<String> gender, ArrayList<String> platformsList, ArrayList<String> address,ArrayList<String> id,String userId,Context nContext) {
         this.fNameList = fNameList;
         this.lNameList = lNameList;
         this.gender = gender;
         this.platformsList = platformsList;
         this.address = address;
         this.id = id;
+        this.userId = userId;
         this.nContext = nContext;
     }
 
@@ -82,7 +84,8 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
                 //send to another activity displaying time slots from that therapist
                 String identify = id.get(position);
                 Intent intent = new Intent(nContext,Booking.class);
-                intent.putExtra("USER_ID",identify);
+                intent.putExtra("THERAPIST_ID",identify);//therapist id
+                intent.putExtra("USER_ID",userId);//id of client
                 nContext.startActivity(intent);
                 // THIS WILL HAVE TO SEND A NOTIFICATION FOR THE THERAPIST IN QUESTION
             }

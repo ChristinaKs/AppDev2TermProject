@@ -26,12 +26,13 @@ public class Booking extends AppCompatActivity {
 
         db = new DBHelper(Booking.this);
         Intent intent = getIntent();
-        String idToUse = intent.getStringExtra("USER_ID");
+        String therapistId = intent.getStringExtra("THERAPIST_ID");
+        String clientId = intent.getStringExtra("USER_ID");
 
         ArrayList<String> times = new ArrayList<>();
         ArrayList<String> timeIdList = new ArrayList<>();
 
-        Cursor cursor = db.getTimeByTherapistId(idToUse);
+        Cursor cursor = db.getTimeByTherapistId(therapistId);
         while(cursor.moveToNext()){
             Integer id = cursor.getInt(0);
             String timeId= id.toString();
@@ -41,7 +42,7 @@ public class Booking extends AppCompatActivity {
 
         //recyclerview adapter and put in arraylist of time and id
         RecyclerView adapter = findViewById(R.id.bookRecyclerView);
-        BookingAdapter bookingAdapter = new BookingAdapter(timeIdList,times,this);
+        BookingAdapter bookingAdapter = new BookingAdapter(timeIdList,times,therapistId,clientId,this);
         adapter.setAdapter(bookingAdapter);
         adapter.setLayoutManager(new LinearLayoutManager(this));
 
