@@ -15,16 +15,16 @@ import java.util.ArrayList;
 public class ClientAppointmentAdapter extends RecyclerView.Adapter<ClientAppointmentAdapter.MyViewHolder>{
 
     ArrayList<String> therapistLicense = new ArrayList<>();
-    ArrayList<String> appointmentTime = new ArrayList<>();
+    ArrayList<String> appointmentTimeList = new ArrayList<>();
     Context mContext;
-    Context context;
+    //Context context;
     LayoutInflater minflator;
 
     public ClientAppointmentAdapter(ArrayList<String> therapistLicense, ArrayList<String> appointmentTime,
                                        Context mContext){
 
         this.therapistLicense = therapistLicense;
-        this.appointmentTime = appointmentTime;
+        this.appointmentTimeList = appointmentTime;
         this.mContext = mContext;
     }
 
@@ -37,25 +37,22 @@ public class ClientAppointmentAdapter extends RecyclerView.Adapter<ClientAppoint
 
     @Override
     public void onBindViewHolder(@NonNull ClientAppointmentAdapter.MyViewHolder holder, int position){
-//        DBHelper db = new DBHelper(context);
-//
-//        String therapistLicense = "";
-//        String appointmentTime = "";
-//
-//        Cursor cursor = db.getTherapistAppointments();
-//
-//        while(cursor.moveToNext()){
-//            therapistLicense = cursor.getString(2);
-//            appointmentTime = cursor.getString(3);
-//        }
-//
-//        holder.therapistLicense.setText(therapistLicense);
-//        holder.appointmentTime.setText(appointmentTime);
+        DBHelper db = new DBHelper(mContext);
+        holder.appointmentTime.setText(appointmentTimeList.get(position));
+        String therapistName = "";
+
+        //need get therapist first name take in parameter of id
+        Cursor cursor = db.getTherapistById(therapistLicense.get(position));
+        while(cursor.moveToNext()){
+            therapistName = cursor.getString(3);
+        }
+
+        holder.therapistLicense.setText(therapistName);
     }
 
     @Override
     public int getItemCount(){
-        return appointmentTime.size();
+        return appointmentTimeList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

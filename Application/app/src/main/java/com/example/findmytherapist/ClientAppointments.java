@@ -32,27 +32,27 @@ public class ClientAppointments extends AppCompatActivity {
         //id of client
         Intent intent = getIntent();
         userId = intent.getIntExtra("USER_ID",-1);
+        String idToUse = userId.toString();
 
+        ArrayList<String> TherapistLicense = new ArrayList<>();
+        ArrayList<String> AppointmentTime = new ArrayList<>();
 
-//        ArrayList<String> TherapistLicense = new ArrayList<>();
-//        ArrayList<String> AppointmentTime = new ArrayList<>();
-//
-//        Cursor result = db.getTherapistData();
-//        while(result.moveToNext()){
-//            //license in db is integer so we're turning it into a string
-//            Integer license = result.getInt(1);
-//            String therapistlicense = license.toString();
-//            TherapistLicense.add(therapistlicense);
-//
-//            //getting rest of info
-//            AppointmentTime.add(result.getString(3));
-//        }
-//
-//        //display it all in the recyclerview
-//        RecyclerView adapter = findViewById(R.id.clientAppoitmentRV);
-//        ClientAppointmentAdapter clientAppointmentAdapter = new ClientAppointmentAdapter(TherapistLicense, AppointmentTime, this);
-//        adapter.setAdapter(clientAppointmentAdapter);
-//        adapter.setLayoutManager(new LinearLayoutManager(this));
+        Cursor result = db.getClientAppointments(idToUse);
+        while(result.moveToNext()){
+            //license in db is integer so we're turning it into a string
+            Integer license = result.getInt(0);
+            String therapistlicense = license.toString();
+            TherapistLicense.add(therapistlicense);
+
+            //getting rest of info
+            AppointmentTime.add(result.getString(1));
+        }
+
+        //display it all in the recyclerview
+        RecyclerView adapter = findViewById(R.id.clientAppoitmentRV);
+        ClientAppointmentAdapter clientAppointmentAdapter = new ClientAppointmentAdapter(TherapistLicense, AppointmentTime, this);
+        adapter.setAdapter(clientAppointmentAdapter);
+        adapter.setLayoutManager(new LinearLayoutManager(this));
 
 
         clientProfile.setOnClickListener(new View.OnClickListener() {
