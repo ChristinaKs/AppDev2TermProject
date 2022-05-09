@@ -47,6 +47,10 @@ public class MyClientsAdapter extends RecyclerView.Adapter<MyClientsAdapter.MyVi
         DBHelper db = new DBHelper(context);
 
         String clientID = "";
+        String clientName = "";
+        String clientLast = "";
+        String ageClient = "";
+        String genderClient = "";
 
         Cursor myClientsID = db.getMyClients();
 
@@ -54,11 +58,20 @@ public class MyClientsAdapter extends RecyclerView.Adapter<MyClientsAdapter.MyVi
             clientID = myClientsID.getString(0);
         }
 
+        Cursor clientInfo = db.getClientInfo();
+
+        while(clientInfo.moveToNext()){
+            clientName = clientInfo.getString(3);
+            clientLast = clientInfo.getString(4);
+            ageClient = clientInfo.getString(6);
+            genderClient = clientInfo.getString(5);
+        }
+
         holder.clientID.setText(clientID);
-        holder.clientFirstName.setText(myClientsFirstName.get(position));
-        holder.clientLastName.setText(myClientsLastName.get(position));
-        holder.clientAge.setText(myClientsAge.get(position));
-        holder.clientGender.setText(myClientsGender.get(position));
+        holder.clientFirstName.setText(clientName);
+        holder.clientLastName.setText(clientLast);
+        holder.clientAge.setText(ageClient);
+        holder.clientGender.setText(genderClient);
     }
 
     @Override

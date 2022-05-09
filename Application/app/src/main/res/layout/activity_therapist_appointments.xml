@@ -24,36 +24,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="201dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:text="Past Appointments: "
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="228dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="216dp"
-        android:text="Upcoming Appointments: "
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="413dp"
         android:layout_height="78dp"
@@ -90,4 +60,13 @@
             app:srcCompat="@android:drawable/ic_menu_month"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/therapistAppointmentsRV"
+        android:layout_width="413dp"
+        android:layout_height="524dp"
+        android:layout_marginTop="43dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
