@@ -79,6 +79,7 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.MyVi
                 }
             }
         });
+
         holder.bookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

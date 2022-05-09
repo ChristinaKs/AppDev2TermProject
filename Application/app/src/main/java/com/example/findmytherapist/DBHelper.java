@@ -84,7 +84,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertTime (Integer Therapist_License, Integer Time_IsAvailable,String Time_Time) {
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TIME_COL_2,Therapist_License);
@@ -95,12 +94,10 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-
     }
 
     public boolean insertClient (String Client_Email, String Client_Password,String Client_First_Name,
                                     String Client_Last_Name, String Client_Gender, String Client_Age,String Client_Address) {
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(CLIENT_COL_2,Client_Email);
@@ -115,7 +112,6 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-
     }
 
     public boolean insertTherapist (Integer Therapist_License, String Therapist_Email,String Therapist_Password,
@@ -140,11 +136,9 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-
     }
 
     public boolean insertAppointment (Integer Therapist_License, Integer Client_Id,String Time_Time) {
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(APPOINTMENT_COL_2,Therapist_License);
@@ -155,14 +149,13 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-
     }
 
     public Integer deleteApp (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(APPOINTMENT_TABLE, APPOINTMENT_COL_1+" = ? ", new String[] {id});
-
     }
+
     public Cursor getTherapistData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + THERAPIST_TABLE, null);
@@ -175,17 +168,20 @@ public class DBHelper extends SQLiteOpenHelper {
         //res.moveToFirst();
         return res;
     }
+
     public Cursor getClientDataById(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + CLIENT_TABLE + " where "+CLIENT_COL_1+" =?",new String[]{id}, null);
         return res;
     }
+
     public Cursor getTimeByTherapistId(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TIME_TABLE + " where "+TIME_COL_2+" =?",new String[]{id}, null);
         //res.moveToFirst();
         return res;
     }
+
     public Cursor getTimeData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TIME_TABLE, null);
@@ -208,6 +204,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.update(THERAPIST_TABLE, contentValues, THERAPIST_COL_1+" = ? ", new String[] {id});
         return  true;
     }
+
     public boolean updateClient (String id, String Client_Email,String Client_First_Name,String Client_Last_Name,
                                  String Client_Gender,String Client_Age,String Client_Address) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -221,6 +218,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.update(CLIENT_TABLE, contentValues, CLIENT_COL_1+" = ? ", new String[] {id});
         return  true;
     }
+
     public boolean updateTime (String id, String Time_IsAvailable,String Time_Time) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -229,6 +227,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.update(TIME_TABLE, contentValues, TIME_COL_1+" = ? ", new String[] {id});
         return  true;
     }
+
     public Integer deleteTherapist (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(THERAPIST_TABLE, THERAPIST_COL_1+" = ?", new String[] {id});
@@ -245,7 +244,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public Integer deleteTimeSlot (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TIME_TABLE, TIME_COL_1+" = ? ", new String[] {id});
-
     }
 
     public Boolean checkClientEmailExists(String email){
@@ -257,6 +255,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
     public Boolean checkTherapistTimeSlotExists(String id,String time){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from " +TIME_TABLE+" where "+TIME_COL_2+" =? and "+TIME_COL_4+" =? ",new String[]{id,time});
@@ -266,6 +265,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
     public Boolean checkTherapistEmailExists(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from " +THERAPIST_TABLE+" where "+THERAPIST_COL_2+" =?",new String[]{email});
@@ -285,6 +285,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
     public Boolean checkTherapistEmailPassword(String email,String pass){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from "+THERAPIST_TABLE+" where "+THERAPIST_COL_2+" =? and "+THERAPIST_COL_3+" =? ",new String[]{email,pass});
@@ -302,6 +303,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Integer result = cursor.getInt(cursor.getColumnIndexOrThrow("Client_Id"));
         return result;
     }
+
     public Integer getTimeIdByLicenseAndTime(String license,String time){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select Time_Id from "+TIME_TABLE+" where "+TIME_COL_2+" =? and "+TIME_COL_4+" =? ",new String[]{license,time});
@@ -311,11 +313,24 @@ public class DBHelper extends SQLiteOpenHelper {
         Integer result = cursor.getInt(cursor.getColumnIndexOrThrow("Time_Id"));
         return result;
     }
+
     public Integer getIdByEmailTherapist(String email){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select Therapist_License from "+THERAPIST_TABLE+" where "+THERAPIST_COL_2+" =? ",new String[]{email});
         cursor.moveToFirst();
         Integer result = cursor.getInt(cursor.getColumnIndexOrThrow("Therapist_License") );
         return result;
+    }
+
+    public Cursor getMyClients() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select Appointment_Client_Id from " + APPOINTMENT_TABLE, null);
+        return res;
+    }
+
+    public Cursor getClientInfo(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select Client_First_Name, Client_Last_Name, Client_Gender, Client_Age from " + CLIENT_TABLE + " where " + CLIENT_COL_1 + " =?", null);
+        return res;
     }
 }

@@ -6,28 +6,66 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/firstNameTextView"
-        android:layout_width="146dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/lastNameTextView"
         android:layout_width="147dp"
         android:layout_height="27dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/firstNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/idTextView" />
+
+    <TextView
+        android:id="@+id/ageTextView"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameTextView" />
+
+    <TextView
+        android:id="@+id/idTextView"
+        android:layout_width="141dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="87dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="Gender:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/ageTextView"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTextView" />
+
+    <TextView
+        android:id="@+id/genderTextView"
+        android:layout_width="97dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/gender"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTextView" />
+
+    <TextView
+        android:id="@+id/firstNameTextView"
+        android:layout_width="146dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="80dp"
         android:layout_height="26dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:text="Age:"
         android:textSize="16sp"
@@ -35,31 +73,14 @@
         app:layout_constraintTop_toBottomOf="@+id/firstNameTextView" />
 
     <TextView
-        android:id="@+id/ageTextView"
-        android:layout_width="70dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/gender"
-        android:layout_width="87dp"
+        android:id="@+id/textView15"
+        android:layout_width="80dp"
         android:layout_height="26dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
-        android:text="Gender:"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="Client ID:"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/ageTextView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/genderTextView"
-        android:layout_width="97dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toEndOf="@+id/gender"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
