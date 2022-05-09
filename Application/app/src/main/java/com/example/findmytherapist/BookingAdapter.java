@@ -43,10 +43,10 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.timeSlot.setText(timeAdapter.get(position));
 
- /*       holder.bookNow.setOnClickListener(new View.OnClickListener() {
+        holder.bookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String timeId = idAdapter.get(position);
+                /*String timeId = idAdapter.get(position);
                 // delete time slot availability + add the appointment
                 Integer isTimeSlotDeleted = Booking.db.deleteTimeSlot(timeSlot.get(holder.getAdapterPosition()));
                 // inserting appointment doesnt exist
@@ -61,9 +61,9 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
                 } else {
                     Toast.makeText(view.getContext(),
                             "There was an issue with removing the time slot", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
-        });*/
+        });
     }
 
     @Override

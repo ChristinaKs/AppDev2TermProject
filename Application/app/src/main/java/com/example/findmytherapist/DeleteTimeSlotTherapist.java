@@ -14,7 +14,7 @@ public class DeleteTimeSlotTherapist extends AppCompatActivity {
 
     ArrayList<String> mTimeSlot = new ArrayList<>();
     RecyclerView rv;
-    static DBHelper db /*= new DBHelper(DeleteTimeSlotTherapist.this)*/;
+    DBHelper db = new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
